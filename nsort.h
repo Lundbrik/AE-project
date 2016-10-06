@@ -1,53 +1,153 @@
 #include <vector>
 
+#define comp_swap(a, b) if (a>b) std::swap(a,b)
+
+
+template <class T>
+void nsort_8(std::vector<T> &data) {
+    // Layer 1
+    comp_swap(data[0], data[1]);
+    comp_swap(data[2], data[3]);
+    comp_swap(data[4], data[5]);
+    comp_swap(data[6], data[7]);
+
+    // Layer 2
+    comp_swap(data[0], data[2]);
+    comp_swap(data[4], data[6]);
+
+    // Layer 3
+    comp_swap(data[1], data[3]);
+
+    // Layer 4
+    comp_swap(data[0], data[4]);
+    comp_swap(data[5], data[7]);
+
+    // Layer 5
+    comp_swap(data[3], data[7]);
+
+    // Layer 6
+    comp_swap(data[1], data[5]);
+
+    // Layer 7
+    comp_swap(data[3], data[5]);
+
+    // Layer 8
+    comp_swap(data[2], data[6]);
+
+    // Layer 9
+    comp_swap(data[2], data[4]);
+
+    // Layer 10
+    comp_swap(data[1], data[2]);
+    comp_swap(data[3], data[6]);
+
+    // Layer 11
+    comp_swap(data[2], data[4]);
+    comp_swap(data[5], data[6]);
+
+    // Layer 12
+    comp_swap(data[3], data[4]);
+}
+
+
+
 template <class T>
 void nsort_7(std::vector<T> &data) {
-    if (data[0] > data[1])
-        std::swap(data[0], data[1]);
+    // Layer 1
+    comp_swap(data[0], data[1]);
+    comp_swap(data[2], data[3]);
+    comp_swap(data[4], data[5]);
 
-    if (data[2] > data[3])
-        std::swap(data[2], data[3]);
+    // Layer 2
+    comp_swap(data[0], data[6]);
 
-    if (data[4] > data[5])
-        std::swap(data[4], data[5]);
+    // Layer 3
+    comp_swap(data[2], data[4]);
 
-    if (data[0] > data[6])
-        std::swap(data[0], data[6]);
+    // Layer 4
+    comp_swap(data[0], data[2]);
 
-    if (data[2] > data[4])
-        std::swap(data[2], data[4]);
+    // Layer 5
+    comp_swap(data[1], data[3]);
+    comp_swap(data[5], data[6]);
 
-    if (data[0] > data[2])
-        std::swap(data[0], data[2]);
+    // Layer 6
+    comp_swap(data[1], data[4]);
 
-    if (data[1] > data[3])
-        std::swap(data[1], data[3]);
+    // Layer 7
+    comp_swap(data[2], data[5]);
 
-    if (data[5] > data[6])
-        std::swap(data[5], data[6]);
+    // Layer 8
+    comp_swap(data[1], data[2]);
+    comp_swap(data[4], data[5]);
 
-    if (data[1] > data[4])
-        std::swap(data[1], data[4]);
+    // Layer 9
+    comp_swap(data[2], data[4]);
 
-    if (data[2] > data[5])
-        std::swap(data[2], data[5]);
+    // Layer 10
+    comp_swap(data[3], data[6]);
 
-    if (data[1] > data[2])
-        std::swap(data[1], data[2]);
+    // Layer 11
+    comp_swap(data[3], data[5]);
 
-    if (data[4] > data[5])
-        std::swap(data[4], data[5]);
+    // Layer 12
+    comp_swap(data[3], data[4]);
+}
 
-    if (data[2] > data[4])
-        std::swap(data[2], data[4]);
 
-    if (data[3] > data[6])
-        std::swap(data[3], data[6]);
+template <class T>
+void nsort_6(std::vector<T> &data) {
+    // Layer 1
+    comp_swap(data[0], data[1]);
+    comp_swap(data[2], data[3]);
+    comp_swap(data[4], data[5]);
 
-    if (data[3] > data[5])
-        std::swap(data[3], data[5]);
+    // Layer 2
+    comp_swap(data[0], data[2]);
 
-    if (data[3] > data[4])
-        std::swap(data[3], data[4]);
-    return;
+    // Layer 3
+    comp_swap(data[0], data[4]);
+
+    // Layer 4
+    comp_swap(data[1], data[3]);
+
+    // Layer 5
+    comp_swap(data[1], data[5]);
+
+    // Layer 6
+    comp_swap(data[2], data[4]);
+
+    // Layer 7
+    comp_swap(data[1], data[2]);
+    comp_swap(data[3], data[5]);
+
+    // Layer 8
+    comp_swap(data[3], data[4]);
+
+    // Layer 9
+    comp_swap(data[2], data[3]);
+}
+
+template <class T>
+void nsort_5(std::vector<T> &data) {
+    // Layer 1
+    comp_swap(data[0], data[1]);
+    comp_swap(data[2], data[3]);
+
+    // Layer 2
+    comp_swap(data[0], data[2]);
+
+    // Layer 3
+    comp_swap(data[1], data[3]);
+
+    // Layer 4
+    comp_swap(data[1], data[2]);
+    comp_swap(data[3], data[4]);
+
+    // Layer 5
+    comp_swap(data[1], data[3]);
+
+    // Layer 6
+    comp_swap(data[0], data[1]);
+    comp_swap(data[2], data[4]);
 }
