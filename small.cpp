@@ -140,8 +140,14 @@ void fsort_7(std::vector<T> &data) {
 template <class T>
 void fsort(std::vector<T> &data) {
     switch (data.size()) {
+        case 8:
+            nsort_8(data);
+            break;
         case 7:
-            nsort_7<T>(data);
+            nsort_7(data);
+            break;
+        case 6:
+            nsort_6(data);
             break;
         case 5:
             nsort_5(data);
@@ -149,15 +155,4 @@ void fsort(std::vector<T> &data) {
         default:
             std::sort(data.begin(), data.end());
     }
-}
-
-
-
-int main() {
-    std::vector<int> test = {2, 9, 0, 1, -1, 10};
-    fsort(test);
-    for (int i : test) {
-        printf("%i, ", i);
-    }
-    return 0;
 }
