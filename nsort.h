@@ -151,3 +151,36 @@ void nsort_5(std::vector<T> &data) {
     comp_swap(data[0], data[1]);
     comp_swap(data[2], data[3]);
 }
+
+template <class T>
+void nsort_4(std::vector<T> &data) {
+    // Layer 1
+    comp_swap(data[0], data[1]);
+    comp_swap(data[2], data[3]);
+
+    // Layer 2
+    comp_swap(data[1], data[3]);
+
+    // Layer 3
+    comp_swap(data[0], data[2]);
+
+    // Layer 4
+    comp_swap(data[1], data[2]);
+}
+
+template <class T>
+void nsort_3(std::vector<T> &data) {
+    // Layer 1
+    comp_swap(data[1], data[2]);
+
+    // Layer 2
+    comp_swap(data[0], data[1]);
+
+    // Layer 3
+    comp_swap(data[1], data[2]);
+}
+
+template <class T>
+void nsort_2(std::vector<T> &data) {
+    comp_swap(data[0], data[1]);
+}
