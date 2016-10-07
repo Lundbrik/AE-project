@@ -149,5 +149,5 @@ void nsort_5(std::vector<T> &data) {
 
     // Layer 6
     comp_swap(data[0], data[1]);
-    comp_swap(data[2], data[4]);
+    comp_swap(data[2], data[3]);
 }
