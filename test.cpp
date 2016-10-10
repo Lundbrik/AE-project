@@ -18,8 +18,8 @@ int main() {
     std::vector<s_test> tests =
         {   gtest(nsort_test5_1), gtest(nsort_test5_2), gtest(nsort_test6_1),
             gtest(nsort_test6_2), gtest(nsort_test7_1), gtest(nsort_test7_2),
-            gtest(nsort_test8_1), gtest(nsort_test8_2), gtest(nsort_test9_2),
-            gtest(nsort_test9_3)
+            gtest(nsort_test8_1), gtest(nsort_test8_2), gtest(nsort_test9_1),
+            gtest(nsort_test9_2), gtest(nsort_test10_1), gtest(nsort_test10_2)
         };
 
     int passed = 0;

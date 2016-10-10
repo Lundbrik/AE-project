@@ -69,7 +69,7 @@ bool nsort_test8_2() {
 
     return (is_sorted(data) && is_equal(data, sorted));
 }
-bool nsort_test9_2() {
+bool nsort_test9_1() {
     std::vector<int> data    = {9, 8, 7, 6, 5, 4, 3, 2, 1};
     std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -78,12 +78,52 @@ bool nsort_test9_2() {
     return (is_sorted(data) && is_equal(data, sorted));
 }
 
-bool nsort_test9_3() {
-    std::vector<int> data;
-    push_random(data, 9);
+bool nsort_test9_2() {
 
-    nsort_9(data);
+    for (int i = 0; i < 10; i++) {
+        std::vector<int> data;
+        push_random(data, 9);
 
-    return is_sorted(data);
+        auto orig = data;
+
+        nsort_9(data);
+        if (!is_sorted(data)) {
+            printf("nsort9 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool nsort_test10_1() {
+    std::vector<int> data    = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    nsort_10(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test10_2() {
+
+    for (int i = 0; i < 10; i++) {
+        std::vector<int> data;
+        push_random(data, 10);
+
+        auto orig = data;
+
+        nsort_10(data);
+        if (!is_sorted(data)) {
+            printf("nsort10 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+
+    return true;
 }
 
