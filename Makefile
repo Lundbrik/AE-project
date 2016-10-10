@@ -5,8 +5,8 @@ CXXFLAGS   = -O3
 BUILD	    = build
 SOURCES_CPP = test.cpp
 HELPERS     = nsort.h test_helpers.h
-OBJECTS     = build/test.o
-EXECUTABLE  = build/test
+OBJECTS     = $(BUILD)/test.o
+EXECUTABLE  = $(BUILD)/test
 
 
 default: all
