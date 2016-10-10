@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <iostream>
 
+#ifndef test_helpers
+#define test_helpers
 template <class T>
 bool is_sorted(std::vector<T> &data) {
     for (int i = 0; i < data.size()-1; i++) {
@@ -35,3 +37,4 @@ void print_vector(std::vector<int> &data) {
     }
     std::cout << "]" << std::endl;
 }
+#endif
