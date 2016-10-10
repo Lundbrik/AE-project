@@ -18,8 +18,8 @@ void nsort_9(std::vector<T> &data) {
     comp_swap(data[4], data[5]);
 
     // Layer 5
-    comp_swap(data[1], data[3]);
-    comp_swap(data[4], data[8]);
+    comp_swap(data[1], data[4]);
+    comp_swap(data[5], data[8]);
 
     // Layer 6
     comp_swap(data[0], data[2]);
