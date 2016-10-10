@@ -1,6 +1,16 @@
 #include "nsort.h"
 #include <stdio.h>
+#include <functional>
+#include <string>
 #include "test_helpers.h"
+
+#define gtest(name) s_test {name, "name"}
+
+
+struct s_test {
+    std::function<bool()> func;
+    std::string name;
+};
 
 
 bool test5_1() {
@@ -23,6 +33,15 @@ bool test5_2() {
 bool test6_1() {
     std::vector<int> data    = {0, 5, -1, 3, 10, 2};
     std::vector<int> sorted  = {-1, 0, 2, 3, 5, 10};
+
+    nsort_6(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool test6_2() {
+    std::vector<int> data    = {5, 4, 3, 2, 1, 0};
+    std::vector<int> sorted  = {0, 1, 2, 3, 4, 5};
 
     nsort_6(data);
 
@@ -72,17 +91,33 @@ bool test9_2() {
     return (is_sorted(data) && is_equal(data, sorted));
 }
 
+bool test9_3() {
+    std::vector<int> data;
+    push_random(data, 9);
+
+    nsort_9(data);
+
+    return is_sorted(data);
+}
+
 int main() {
-    printf("Test nsort5_1(): %s\n", test5_1() ? "Passed" : "Failed");
-    printf("Test nsort5_2(): %s\n", test5_2() ? "Passed" : "Failed");
+    std::vector<s_test> tests =
+        {   gtest(test5_1), gtest(test5_2), gtest(test6_1), gtest(test6_2),
+            gtest(test7_1), gtest(test7_2), gtest(test8_1), gtest(test8_2),
+            gtest(test9_2), gtest(test9_3)
+        };
 
-    printf("Test nsort6_1(): %s\n", test6_1() ? "Passed" : "Failed");
+    int passed = 0;
+    int failed = 0;
 
-    printf("Test nsort7_1(): %s\n", test7_1() ? "Passed" : "Failed");
-    printf("Test nsort7_2(): %s\n", test7_2() ? "Passed" : "Failed");
+    for (auto test : tests) {
+        if ((test.func)()) {
+            passed++;
+        } else {
+            failed++;
+            printf("Test failed: %s\n", test.name);
+        }
+    }
 
-    printf("Test nsort8_1(): %s\n", test8_1() ? "Passed" : "Failed");
-    printf("Test nsort8_2(): %s\n", test8_2() ? "Passed" : "Failed");
-
-    printf("Test nsort9_2(): %s\n", test9_2() ? "Passed" : "Failed");
+    printf("Passed: %i, failed: %i\n", passed, failed);
 }
