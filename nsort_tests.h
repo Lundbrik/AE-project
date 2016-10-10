@@ -127,3 +127,32 @@ bool nsort_test10_2() {
     return true;
 }
 
+bool nsort_test11_1() {
+    std::vector<int> data    = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+
+    nsort_11(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test11_2() {
+
+    for (int i = 0; i < 10; i++) {
+        std::vector<int> data;
+        push_random(data, 11);
+
+        auto orig = data;
+
+        nsort_11(data);
+        if (!is_sorted(data)) {
+            printf("nsort11 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+
+    return true;
+}
+
