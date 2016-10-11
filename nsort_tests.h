@@ -1,4 +1,5 @@
 #include "test_helpers.h"
+#define RAND_TESTS 100
 
 bool nsort_test5_1() {
     std::vector<int> data    = {5, -1, 3, 10, 2};
@@ -80,7 +81,7 @@ bool nsort_test9_1() {
 
 bool nsort_test9_2() {
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < RAND_TESTS; i++) {
         std::vector<int> data;
         push_random(data, 9);
 
@@ -109,7 +110,7 @@ bool nsort_test10_1() {
 
 bool nsort_test10_2() {
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < RAND_TESTS; i++) {
         std::vector<int> data;
         push_random(data, 10);
 
@@ -138,7 +139,7 @@ bool nsort_test11_1() {
 
 bool nsort_test11_2() {
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < RAND_TESTS; i++) {
         std::vector<int> data;
         push_random(data, 11);
 
@@ -156,3 +157,31 @@ bool nsort_test11_2() {
     return true;
 }
 
+bool nsort_test12_1() {
+    std::vector<int> data    = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
+    nsort_12(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test12_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 12);
+
+        auto orig = data;
+
+        nsort_12(data);
+        if (!is_sorted(data)) {
+            printf("nsort12 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+
+    return true;
+}

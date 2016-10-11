@@ -20,7 +20,8 @@ int main() {
             gtest(nsort_test6_2), gtest(nsort_test7_1), gtest(nsort_test7_2),
             gtest(nsort_test8_1), gtest(nsort_test8_2), gtest(nsort_test9_1),
             gtest(nsort_test9_2), gtest(nsort_test10_1), gtest(nsort_test10_2),
-            gtest(nsort_test11_1), gtest(nsort_test11_2)
+            gtest(nsort_test11_1), gtest(nsort_test11_2), gtest(nsort_test12_1),
+            gtest(nsort_test12_2)
         };
 
     int passed = 0;

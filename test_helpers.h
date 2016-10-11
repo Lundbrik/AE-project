@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <iostream>
+#include <time.h>
 
 #ifndef test_helpers
 #define test_helpers
@@ -24,7 +25,7 @@ bool is_equal(std::vector<T> &a, std::vector<T> &b) {
 }
 
 void push_random(std::vector<int> &data, int n) {
-    srand(1001);
+    srand(time(NULL));
     for (int i = 0; i < n; i++) {
         data.push_back(rand() % 10000);
     }
