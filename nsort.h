@@ -258,7 +258,7 @@ void nsort_9(std::vector<T> &data) {
     comp_swap(data[6], data[7]);
 
     // Layer 7
-    comp_swap(data[2], data[7]);
+    comp_swap(data[2], data[6]);
     comp_swap(data[7], data[8]);
 
     // Layer 8
