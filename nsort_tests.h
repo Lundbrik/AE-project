@@ -1,5 +1,12 @@
 #include "test_helpers.h"
 #define RAND_TESTS 100
+#define NTYPE <int>
+#define gnsort(inputs) s_nsort {nsort_ ## inputs NTYPE , inputs}
+
+struct s_nsort {
+    std::function<void(std::vector<int>&)> func;
+    int inputs;
+};
 
 bool nsort_test5_1() {
     std::vector<int> data    = {5, -1, 3, 10, 2};
@@ -185,3 +192,68 @@ bool nsort_test12_2() {
 
     return true;
 }
+
+bool nsort_test16_1() {
+    std::vector<int> data    = {16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+
+    nsort_16(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test16_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 16);
+
+        auto orig = data;
+
+        nsort_16(data);
+        if (!is_sorted(data)) {
+            printf("nsort16 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+bool complete_test(std::vector<int> &data, int len, int n,
+        std::function<void(std::vector<int>&)> s)
+{
+    if (n < len) {
+        for (int i = 0; i < (len - n); i++) {
+            data[n] = n + i * len;
+            if (!complete_test(data, len, n+1, s)) {
+                return false;
+            }
+        }
+        return true;
+    } else {
+        auto copy = data;
+        s(copy);
+        return is_sorted(copy);
+    }
+}
+
+bool test_all_permutations(int inputs) {
+    s_nsort nsorts[] = { gnsort(2), gnsort(3), gnsort(4), gnsort(5), gnsort(6),
+        gnsort(7), gnsort(8), gnsort(9), gnsort(10), gnsort(11), gnsort(12),
+        gnsort(16) };
+
+    for (s_nsort nsort : nsorts) {
+        if (inputs == nsort.inputs) {
+            std::vector<int> data;
+            push_random(data, inputs);
+            return complete_test(data, inputs, 0, nsort.func);
+        }
+    }
+    std::cout << "Sorting network of size: " << inputs << " not found" << std::endl;
+    return false;
+}
+
