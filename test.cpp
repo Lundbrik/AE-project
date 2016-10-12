@@ -5,7 +5,7 @@
 #include "nsort_tests.h"
 #include "test_helpers.h"
 
-#define gtest(name) s_test {name, "name"}
+#define gtest(name) s_test {name, #name}
 
 
 struct s_test {
@@ -21,7 +21,7 @@ int main() {
             gtest(nsort_test8_1), gtest(nsort_test8_2), gtest(nsort_test9_1),
             gtest(nsort_test9_2), gtest(nsort_test10_1), gtest(nsort_test10_2),
             gtest(nsort_test11_1), gtest(nsort_test11_2), gtest(nsort_test12_1),
-            gtest(nsort_test12_2)
+            gtest(nsort_test12_2), gtest(nsort_test16_1), gtest(nsort_test16_2)
         };
 
     int passed = 0;
@@ -32,9 +32,10 @@ int main() {
             passed++;
         } else {
             failed++;
-            printf("Test failed: %s\n", test.name);
+            std::cout << "Test failed: " << test.name << std::endl;
         }
     }
 
     printf("Passed: %i, failed: %i\n", passed, failed);
+
 }
