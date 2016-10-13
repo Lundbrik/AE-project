@@ -1,12 +1,6 @@
 #include "test_helpers.h"
 #define RAND_TESTS 100
-#define NTYPE <int>
-#define gnsort(inputs) s_nsort {nsort_ ## inputs NTYPE , inputs}
 
-struct s_nsort {
-    std::function<void(std::vector<int>&)> func;
-    int inputs;
-};
 
 bool nsort_test5_1() {
     std::vector<int> data    = {5, -1, 3, 10, 2};
@@ -242,9 +236,6 @@ bool complete_test(std::vector<int> &data, int len, int n,
 }
 
 bool test_all_permutations(int inputs) {
-    s_nsort nsorts[] = { gnsort(2), gnsort(3), gnsort(4), gnsort(5), gnsort(6),
-        gnsort(7), gnsort(8), gnsort(9), gnsort(10), gnsort(11), gnsort(12),
-        gnsort(13), gnsort(16) };
 
     for (s_nsort nsort : nsorts) {
         if (inputs == nsort.inputs) {

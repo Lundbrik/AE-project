@@ -4,6 +4,21 @@
 
 #ifndef test_helpers
 #define test_helpers
+
+// Semi easy way to choose from the available nsort functions.
+#define NTYPE <int>
+#define gnsort(inputs) s_nsort {nsort_ ## inputs NTYPE , inputs}
+
+struct s_nsort {
+    std::function<void(std::vector<int>&)> func;
+    int inputs;
+};
+
+s_nsort nsorts[] = { gnsort(2), gnsort(3), gnsort(4), gnsort(5), gnsort(6),
+    gnsort(7), gnsort(8), gnsort(9), gnsort(10), gnsort(11), gnsort(12),
+    gnsort(13), gnsort(16) };
+
+
 template <class T>
 bool is_sorted(std::vector<T> &data) {
     for (int i = 0; i < data.size()-1; i++) {
