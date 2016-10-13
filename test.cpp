@@ -14,7 +14,7 @@ struct s_test {
 };
 
 
-int main() {
+int main(int argc, char* argv[]) {
     std::vector<s_test> tests =
         {   gtest(nsort_test5_1), gtest(nsort_test5_2), gtest(nsort_test6_1),
             gtest(nsort_test6_2), gtest(nsort_test7_1), gtest(nsort_test7_2),
@@ -24,18 +24,29 @@ int main() {
             gtest(nsort_test12_2), gtest(nsort_test16_1), gtest(nsort_test16_2)
         };
 
-    int passed = 0;
-    int failed = 0;
+    if (argc < 2) {
+        int passed = 0;
+        int failed = 0;
 
-    for (auto test : tests) {
-        if ((test.func)()) {
-            passed++;
+        for (auto test : tests) {
+            if ((test.func)()) {
+                passed++;
+            } else {
+                failed++;
+                std::cout << "Test failed: " << test.name << std::endl;
+            }
+        }
+
+        printf("Passed: %i, failed: %i\n", passed, failed);
+    } else {
+        int ind = atoi(argv[1]);
+
+        if (test_all_permutations(ind)) {
+            printf("nsort_%i() passed all permutations\n", ind);
+            return 0;
         } else {
-            failed++;
-            std::cout << "Test failed: " << test.name << std::endl;
+            printf("nsort_%i() failed for some permutations\n", ind);
+            return 1;
         }
     }
-
-    printf("Passed: %i, failed: %i\n", passed, failed);
-
 }
