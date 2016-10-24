@@ -221,6 +221,7 @@ bool complete_test(std::vector<int> &data, int len, int n,
         std::function<void(std::vector<int>&)> s)
 {
     if (n < len) {
+        //printf("%i, %i\n", len, n);
         for (int i = 0; i < (len - n); i++) {
             data[n] = n + i * len;
             if (!complete_test(data, len, n+1, s)) {
@@ -239,9 +240,19 @@ bool test_all_permutations(int inputs) {
 
     for (s_nsort nsort : nsorts) {
         if (inputs == nsort.inputs) {
-            std::vector<int> data;
-            push_random(data, inputs);
-            return complete_test(data, inputs, 0, nsort.func);
+            bool res[inputs];
+#pragma omp parallel for
+            for (int i = 0; i < inputs; i++) {
+                std::vector<int> data;
+                push_random(data, inputs);
+                data[0] = i * inputs;
+                res[i] = complete_test(data, inputs, 1, nsort.func);
+            }
+            for (int i = 0; i < inputs; i++) {
+                if (!res[i])
+                    return false;
+            }
+            return true;
         }
     }
     std::cout << "Sorting network of size: " << inputs << " not found" << std::endl;
