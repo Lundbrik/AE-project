@@ -16,7 +16,7 @@ struct s_nsort {
 
 s_nsort nsorts[] = { gnsort(2), gnsort(3), gnsort(4), gnsort(5), gnsort(6),
     gnsort(7), gnsort(8), gnsort(9), gnsort(10), gnsort(11), gnsort(12),
-    gnsort(13), gnsort(16) };
+    gnsort(13), gnsort(14), gnsort(15), gnsort(16) };
 
 
 template <class T>
