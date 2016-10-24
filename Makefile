@@ -4,7 +4,7 @@ CXXFLAGS   = -O3 -std=c++11
 
 BUILD	    = build
 SOURCES_CPP = test.cpp
-HELPERS     = nsort.h test_helpers.h nsort_tests.h
+HELPERS     = nsort.h test_helpers.h nsort_tests.h fordjohnson.h
 OBJECTS     = $(BUILD)/test.o
 EXECUTABLE  = $(BUILD)/test
 
