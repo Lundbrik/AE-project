@@ -1,9 +1,11 @@
+#ifndef test_helpers
+#define test_helpers
+
 #include <stdlib.h>
 #include <iostream>
 #include <time.h>
-
-#ifndef test_helpers
-#define test_helpers
+#include <functional>
+#include "nsort.h"
 
 // Semi easy way to choose from the available nsort functions.
 #define NTYPE <int>
