@@ -16,11 +16,11 @@ namespace fj {
 		for (int e : vec) {
 			j--;
 			if (j < 1) {
-				std::cout << e << ", ";
+				//std::cout << e << ", ";
 				j=J;
 			}
 		}
-		std::cout << "\n";
+		//std::cout << "\n";
 		return;
 	}
 
@@ -47,19 +47,20 @@ namespace fj {
 		int numofelements = (j-i)/J+1;
 		int a = vec.size()-1;
 
-		std::cout << "  noe = " << numofelements;
+		//std::cout << "  noe = " << numofelements;
 		
 		if (numofelements == 1) {
-			std::cout << "\n";
+			//std::cout << "\n";
 			if (vec[a] - vec[i] > 0) {
 				return i+J;
 			} else {
 				return i;
 			}
+			//return i + (vec[a] - vec[i] > 0)*J;
 		}
 		
 		int ind = i + floor(numofelements/2)*J;
-		std::cout << "  ind = " << ind << "\n";
+		//std::cout << "  ind = " << ind << "\n";
 		if (vec[a] - vec[ind] > 0) {
 			ind += J;
 			if (j < ind) {
@@ -107,7 +108,7 @@ namespace fj {
 			return; 		// hence we return
 		}
 		
-		std::cout << "iteration = " << J << "\n";
+		//std::cout << "iteration = " << J << "\n";
 		int i;
 		
 		//Phase 1 - sort groups of two
@@ -116,12 +117,12 @@ namespace fj {
 			;i += 2*J) {	// Step for every second element
 				lcomp<T, C>(vec, i, J);
 		}
-		printvec<T, C>(vec);
+		//printvec<T, C>(vec);
 		
 		//Phase 2 - sort the larger elements of the groups
 		sort<T, C>(vec, J*2); // Recurse on twice as big groupings
 		
-		printvec<T, C>(vec);
+		//printvec<T, C>(vec);
 		//Phase 3 - sort the rest
 		std::vector<int> bindex;
 		int j;
@@ -137,14 +138,14 @@ namespace fj {
 			}
 		}
 		
-		std::cout << "bindex for " << J << ":\n";
-		printvec<T>(bindex);
+		//std::cout << "bindex for " << J << ":\n";
+		//printvec<T>(bindex);
 		
 		std::cout << "\n";
 		int end = size-1;
 		int prev = NULL;
 		for (i=0; i < bindex.size(); i++) {
-			std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
+			//std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
 			if (bindex[i] <= end) {
 				shift<T,C>(vec, bindex[i], end, J);
 				end -= J;
@@ -154,21 +155,21 @@ namespace fj {
 			}
 		}
 		
-		printvec<T>(vec);
+		//printvec<T>(vec);
 		
 		end = size-1;
 		nei = 0;
 		for (int e : bindex) {
-			std::cout << "e = " << e << ", nei = " << nei << ", J = " << 1 << "\n";
+			//std::cout << "e = " << e << ", nei = " << nei << ", J = " << 1 << "\n";
 			int t = (e-J)+nei*J;
 			int ind = binarySearch<T, C>(vec, (J-1), t, J);
-			std::cout << "ind = " << ind << " t = " << t << "\n";
+			//std::cout << "ind = " << ind << " t = " << t << "\n";
 			shift<T, C>(vec, end, ind, J);
 			nei++;
-			printvec<T>(vec);
+			//printvec<T>(vec);
 		}
 		
-		printvec<T>(vec, J);
+		//printvec<T>(vec, J);
 		return;
 	}
 
