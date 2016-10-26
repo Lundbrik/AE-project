@@ -1,0 +1,165 @@
+\documentclass{DIKU-article}[2016/10/24]
+\usepackage[utf8]{inputenc}
+
+%% Skabelon til LiCS-afleveringer
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begynd preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Til at tegne træer!
+\usepackage{tikz}
+%% Til at kunne have billeder
+\usepackage{graphicx}
+%% Til at kunne have source code
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  keepspaces=true,
+  frame=ltrb,
+  framesep=1pt,
+  commentstyle=\color{Brown},
+  basicstyle=\ttfamily\footnotesize,
+  numbers=left,
+  title=\lstname,
+  columns=fullflexible,
+  extendedchars=\true,
+  inputencoding=ansinew,
+}
+
+%% Font and input encoding
+%% Tillad æøå
+\usepackage[T1]{fontenc}
+%% Babel (language)
+%\usepackage[UKenglish]{babel} % If you write in English
+\usepackage[UKenglish]{isodate}
+%\usepackage{parskip}
+\usepackage{booktabs}
+%\usepackage[danish]{babel} % Hvis du skriver på dansk
+
+%% Til links
+\usepackage{hyperref}
+
+%% AMS-Math packages
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%% Extra symbols that we almost always need
+%\usepackage{stmaryrd}
+\usepackage{color}
+\usepackage{url}
+\usepackage{semantic}
+\usepackage{fancyref}
+\usepackage{enumitem}
+
+
+% Figure subcaptions
+\usepackage{subcaption}
+
+% forkortelse af texttt!
+\newcommand{\tbf}{\textbf}
+\newcommand{\ttt}{\texttt}
+\newcommand{\tit}{\textit}
+
+% Sorting networks
+% Credit to whoever wrote this for the 'Applying Sorting Networks to Synthesize
+% Optimized Sorting Libraries' M. Codish, L. Cruz-Filipe, M. Nebel, P.
+% Schneider-Kamp (https://arxiv.org/abs/1505.01962)
+\usepackage[trim]{tokenizer}
+\newcounter{sncolumncounter}
+\newcounter{snrowcounter}
+
+\def \nodelabel#1{%
+\setcounter{snrowcounter}{1}
+ \foreach \i in {#1}{%
+   \draw (\sncolwidth*\value{sncolumncounter},\value{snrowcounter}) node[anchor=south]{\i};
+   \addtocounter{snrowcounter}{1}
+ }
+\addtocounter{snrowcounter}{-1}
+ \addtocounter{sncolumncounter}{1}
+}
+
+\newcommand{\sncolwidth}{0.7} %
+
+\def \addcomparator#1#2{%
+    \draw (\sncolwidth*\value{sncolumncounter},#1) node[circle,fill=black,minimum size=4pt,inner sep=0pt,outer sep=0pt]{}--(\sncolwidth*\value{sncolumncounter},#2) node[circle,fill=black,minimum size=4pt,inner sep=0pt,outer sep=0pt]{};
+}
+
+\newcommand{\addrevcomparator}[3][0.5]{
+    \draw[>=stealth,postaction={decorate},decoration={markings,mark=at position #1 with {\arrow[scale=2]{<}}}] (\sncolwidth*\value{sncolumncounter},#2) node[circle,fill=black,minimum size=4pt,inner sep=0pt,outer sep=0pt]{}--(\sncolwidth*\value{sncolumncounter},#3) node[circle,fill=black,minimum size=4pt,inner sep=0pt,outer sep=0pt]{};
+}
+
+\def \addhalfcomparator#1#2{%
+    \draw (\sncolwidth*\value{sncolumncounter},#1) node[circle,fill=black,minimum size=4pt,inner sep=0pt,outer sep=0pt]{}--(\sncolwidth*\value{sncolumncounter},#2);
+}
+
+\def \addlayer{%
+  \addtocounter{sncolumncounter}{1}
+}
+
+\def \nextlayer{%
+  \draw [dashed] (\sncolwidth*\value{sncolumncounter}+\sncolwidth,0.6)--(\sncolwidth*\value{sncolumncounter}+\sncolwidth,\value{snrowcounter}+0.6);
+  \addtocounter{sncolumncounter}{2}
+}
+
+\newcommand{\addarrow}[5][0.75]{
+  \draw[>=stealth,postaction={decorate},line width=1.5 pt,decoration={markings,mark=at position #1 with {\arrow[scale=1.2]{>}}}] (\sncolwidth*#2,#3)--(\sncolwidth*#4,#5);
+}
+\def \nodeconnection#1{%
+  \foreach \i in {#1}{%
+    \GetTokens{nodesrc}{nodedest}{\i}
+    \draw (\value{sncolumncounter}*0.7,\nodesrc) node[circle,inner sep=0pt,minimum size=3pt,fill=black]{}--(\value{sncolumncounter}*0.7,\nodedest) node[circle,inner sep=0pt,minimum size=3pt,fill=black]{};
+  }
+  \addtocounter{sncolumncounter}{1}
+}
+\newenvironment{sortingnetwork}[2]
+{
+  \setcounter{sncolumncounter}{0}
+  \setcounter{snrowcounter}{#1}
+  \def \sn@fullsize{15}
+  \begin{tikzpicture}[scale=#2*0.7]
+}
+{
+  \foreach \i in {1, ..., \value{snrowcounter}}
+  {
+    \draw (-\sncolwidth,\i)--(\sncolwidth*\value{sncolumncounter}+\sncolwidth,\i);
+  }
+  \end{tikzpicture}
+}
+% End sorting networks
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Slut preamble -- herunder følger selve dokumentet!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titlehead{Algorithm Engineering - Project}
+\authorhead{C. Johnsen, M. Madsen? and D. Pedersen}
+\title{Algorithm Engineering}
+\author{Carl-Johannes Johnsen (grc431) \and Mads ... \and Daniel Lundberg
+Pedersen (vzb687)}
+
+\institute{%
+    Department of Computer Science, University of Copenhagen\\
+    Universistetsparken 5, DK-2100 Copenhagen East, Denmark\\
+    \email{\{grc431,mds111,vzb687\}@alumni.ku.dk}%
+}
+
+\dates{2016-10-30}
+
+
+\begin{document}
+\maketitle
+
+\input{parallel}
+
+\newpage
+\section{Appendix}
+\appendix
+\input{app-sort-networks}
+
+\newpage
+\input{bib}
+
+\end{document}

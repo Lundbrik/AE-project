@@ -1,0 +1,436 @@
+This is a compilation of figures of the sorting networks implemented.
+\begin{figure}[htb]
+ \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \begin{sortingnetwork}{3}{0.4}
+            \nodeconnection{ {2,3}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}}
+        \end{sortingnetwork}
+        \subcaption{3-input}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \begin{sortingnetwork}{4}{0.4}
+            \nodeconnection{ {1,2}, {3,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,3}}
+            \nodeconnection{ {2,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}}
+        \end{sortingnetwork}
+        \subcaption{4-input}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \begin{sortingnetwork}{5}{0.4}
+            \nodeconnection{ {2,3}, {4,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,3}}
+            \nodeconnection{ {2,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,5}}
+            \nodeconnection{ {1,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}}
+            \nodeconnection{ {3,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}}
+        \end{sortingnetwork}
+        \subcaption{5-input}
+    \end{subfigure}
+ \caption{3-5 input length optimal sorting networks \cite{ron-zeno}}
+ \label{fig:sort-5}
+\end{figure}
+
+
+\begin{figure}[htb]
+ \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{sortingnetwork}{6}{0.4}
+            \nodeconnection{ {1,2}, {3,4}, {5,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,3}, {4,6}}
+            \nodeconnection{ {2,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}, {3,4}, {5,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}, {4,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,4}}
+        \end{sortingnetwork}
+        \subcaption{6-input}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{sortingnetwork}{7}{0.4}
+            \nodeconnection{ {2,3}, {4,5}, {6,7}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,3}, {5,7}}
+            \nodeconnection{ {4,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,7}}
+            \nodeconnection{ {2,6}}
+            \nodeconnection{ {1,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,6}}
+            \nodeconnection{ {1,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,5}}
+            \nodeconnection{ {2,4}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}, {3,4}, {5,6}}
+        \end{sortingnetwork}
+        \subcaption{7-input}
+    \end{subfigure}
+ \caption{6 and 7 input length optimal sorting networks \cite{ron-zeno}}
+ \label{fig:sort-7}
+\end{figure}
+
+
+\begin{figure}[htb]
+ \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{sortingnetwork}{8}{0.4}
+            \nodeconnection{{1,8}}
+            \nodeconnection{{2,7}}
+            \nodeconnection{{3,6}}
+            \nodeconnection{{4,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,4}, {5,8}}
+            \nodeconnection{ {2,3}, {6,7}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}, {3,4}, {5,6}, {7,8}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {4,6}, {3,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}, {4,5}, {6,7}}
+            \nodeconnection{ {3,4}, {5,6}}
+        \end{sortingnetwork}
+        \subcaption{8-input}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \begin{sortingnetwork}{9}{0.4}
+            \nodeconnection{ {2,9}}
+            \nodeconnection{ {3,8}}
+            \nodeconnection{ {4,7}}
+            \nodeconnection{ {5,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,5}, {6,9}}
+            \nodeconnection{ {1,3}, {7,8}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,7}, {8,9}}
+            \nodeconnection{ {1,4}, {5,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}, {4,6}, {7,8}}
+            \nodeconnection{ {3,5}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,4}, {6,8}}
+            \nodeconnection{ {5,7}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}, {4,5}, {6,7}, {8,9}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,4}, {5,6}}
+        \end{sortingnetwork}
+        \subcaption{9-input}
+    \end{subfigure}
+ \caption{8 and 9 input length optimal sorting networks \cite{ron-zeno}}
+ \label{fig:sort-9}
+\end{figure}
+
+
+\begin{figure}[htb]
+ \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{sortingnetwork}{10}{0.4}
+            \nodeconnection{{1,2}, {3,4}, {5,6}, {7,8}, {9,10}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {5,10}}
+            \nodeconnection{ {1,6}}
+            \nodeconnection{ {2,9}}
+            \nodeconnection{ {4,8}}
+            \nodeconnection{ {3,7}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,3}, {4,7}, {8,10}}
+            \nodeconnection{ {2,5}, {6,9}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}, {3,8}, {9,10}}
+            \nodeconnection{ {5,7}}
+            \nodeconnection{ {4,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,5}, {7,9}}
+            \nodeconnection{ {2,4}, {6,8}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}, {4,5}, {6,7}, {8,9}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,4}, {5,6}, {7,8}}
+        \end{sortingnetwork}
+        \subcaption{10-input}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.6\textwidth}
+        \centering
+        \begin{sortingnetwork}{11}{0.4}
+            \nodeconnection{ {1,10}}
+            \nodeconnection{ {2,9}}
+            \nodeconnection{ {3,8}}
+            \nodeconnection{ {4,7}}
+            \nodeconnection{ {5,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,4}, {5,11}}
+            \nodeconnection{ {2,3}, {7,10}}
+            \nodeconnection{ {8,9}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,2}, {3,4}, {6,9}, {10,11}}
+            \nodeconnection{ {7,8}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,3}, {4,6}, {9,11}}
+            \nodeconnection{ {5,10}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {1,5}, {8,9}}
+            \nodeconnection{ {2,6}}
+            \nodeconnection{ {3,10}}
+            \nodeconnection{ {4,7}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {2,5}, {6,8}}
+            \nodeconnection{ {3,4}, {7,10}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {3,5}, {7,8}, {9,10}}
+            \nodeconnection{ {4,6}}
+            \addtocounter{sncolumncounter}{2}
+            \nodeconnection{ {4,5}, {6,7}, {8,9}}
+        \end{sortingnetwork}
+        \subcaption{11-input}
+    \end{subfigure}
+ \caption{10 input length optimal, and 11 input best known sorting networks
+ \cite{ron-zeno}}
+
+ \label{fig:sort-11}
+\end{figure}
+
+\begin{figure}[htb]
+ \centering
+    \centering
+    \begin{sortingnetwork}{12}{0.4}
+        \nodeconnection{ {1,10}}
+        \nodeconnection{ {2,9}}
+        \nodeconnection{ {3,8}}
+        \nodeconnection{ {4,7}}
+        \nodeconnection{ {5,6}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {1,4}, {5,11}}
+        \nodeconnection{ {2,3}, {7,10}}
+        \nodeconnection{ {8,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {1,2}, {3,4}, {6,9}, {10,11}}
+        \nodeconnection{ {7,8}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,3}, {4,6}, {9,11}}
+        \nodeconnection{ {5,10}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {1,5}, {8,9}}
+        \nodeconnection{ {2,6}}
+        \nodeconnection{ {3,10}}
+        \nodeconnection{ {4,7}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,5}, {6,8}}
+        \nodeconnection{ {3,4}, {7,10}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,5}, {7,8}, {9,10}}
+        \nodeconnection{ {4,6}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,5}, {6,7}, {8,9}}
+    \end{sortingnetwork}
+ \caption{12 input best known sorting networks \cite{ron-zeno}}
+ \label{fig:sort-12}
+\end{figure}
+
+
+\begin{figure}[htb]
+ \centering
+    \centering
+    \begin{sortingnetwork}{13}{0.4}
+        \nodeconnection{ {1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,4}, {6,8}, {10,12}}
+        \nodeconnection{ {1,3}, {5,7}, {9,11}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,8}}
+        \nodeconnection{ {3,7}}
+        \nodeconnection{ {2,6}}
+        \nodeconnection{ {1,5}, {9,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {5,13}}
+        \nodeconnection{ {4,12}}
+        \nodeconnection{ {3,11}}
+        \nodeconnection{ {2,10}}
+        \nodeconnection{ {1,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {6,11}}
+        \nodeconnection{ {7,10}}
+        \nodeconnection{ {2,3}, {4,13}}
+        \nodeconnection{ {5,9}}
+        \nodeconnection{ {8,12}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,9}}
+        \nodeconnection{ {2,5}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,5}, {6,7}, {10,11}}
+        \nodeconnection{ {8,13}}
+        \nodeconnection{ {4,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,6}, {8,10}}
+        \nodeconnection{ {7,9}, {11,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,5}, {6,7}, {8,9}, {10,11}, {12,13}}
+        \nodeconnection{ {7,8}, {9,10}}
+    \end{sortingnetwork}
+ \caption{13 input sorting network, derived from Greens 16 input sorting
+    network \cite{hugues-juille}}
+ \label{fig:sort-13}
+\end{figure}
+
+\begin{figure}[htb]
+ \centering
+    \centering
+    \begin{sortingnetwork}{14}{0.4}
+        \nodeconnection{ {1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,4}, {6,8}, {10,12}}
+        \nodeconnection{ {1,3}, {5,7}, {9,11}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,8}}
+        \nodeconnection{ {3,7}}
+        \nodeconnection{ {2,6}, {10,14}}
+        \nodeconnection{ {1,5}, {9,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {6,14}}
+        \nodeconnection{ {5,13}}
+        \nodeconnection{ {4,12}}
+        \nodeconnection{ {3,11}}
+        \nodeconnection{ {2,10}}
+        \nodeconnection{ {1,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {6,11}}
+        \nodeconnection{ {7,10}}
+        \nodeconnection{ {2,3}, {4,13}}
+        \nodeconnection{ {5,9}}
+        \nodeconnection{ {8,12}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,9}}
+        \nodeconnection{ {2,5}, {8,14}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,5}, {6,7}, {10,11}, {12,14}}
+        \nodeconnection{ {8,13}}
+        \nodeconnection{ {4,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,6}, {8,10}}
+        \nodeconnection{ {7,9}, {11,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,5}, {6,7}, {8,9}, {10,11}, {12,13}}
+        \nodeconnection{ {7,8}, {9,10}}
+    \end{sortingnetwork}
+ \caption{14 input sorting network, derived from Greens 16 input sorting
+    network \cite{hugues-juille}}
+ \label{fig:sort-14}
+\end{figure}
+
+
+\begin{figure}[htb]
+ \centering
+    \centering
+    \begin{sortingnetwork}{15}{0.4}
+        \nodeconnection{ {1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,4}, {6,8}, {10,12}}
+        \nodeconnection{ {1,3}, {5,7}, {9,11}, {13,15}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,8}}
+        \nodeconnection{ {3,7}, {11,15}}
+        \nodeconnection{ {2,6}, {10,14}}
+        \nodeconnection{ {1,5}, {9,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {7,15}}
+        \nodeconnection{ {6,14}}
+        \nodeconnection{ {5,13}}
+        \nodeconnection{ {4,12}}
+        \nodeconnection{ {3,11}}
+        \nodeconnection{ {2,10}}
+        \nodeconnection{ {1,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {6,11}}
+        \nodeconnection{ {7,10}}
+        \nodeconnection{ {2,3}, {4,13}}
+        \nodeconnection{ {5,9}}
+        \nodeconnection{ {8,12}, {14,15}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,9}, {12,15}}
+        \nodeconnection{ {2,5}, {8,14}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,5}, {6,7}, {10,11}, {12,14}}
+        \nodeconnection{ {8,13}}
+        \nodeconnection{ {4,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,6}, {8,10}}
+        \nodeconnection{ {7,9}, {11,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,5}, {6,7}, {8,9}, {10,11}, {12,13}}
+        \nodeconnection{ {7,8}, {9,10}}
+    \end{sortingnetwork}
+ \caption{15 input sorting network, derived from Greens 16 input sorting
+    network \cite{hugues-juille}}
+ \label{fig:sort-15}
+\end{figure}
+
+\begin{figure}[htb]
+ \centering
+    \centering
+    \begin{sortingnetwork}{16}{0.4}
+        \nodeconnection{ {1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14},
+        {15,16}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,4}, {6,8}, {10,12}, {14,16}}
+        \nodeconnection{ {1,3}, {5,7}, {9,11}, {13,15}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,8}, {12,16}}
+        \nodeconnection{ {3,7}, {11,15}}
+        \nodeconnection{ {2,6}, {10,14}}
+        \nodeconnection{ {1,5}, {9,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {8,16}}
+        \nodeconnection{ {7,15}}
+        \nodeconnection{ {6,14}}
+        \nodeconnection{ {5,13}}
+        \nodeconnection{ {4,12}}
+        \nodeconnection{ {3,11}}
+        \nodeconnection{ {2,10}}
+        \nodeconnection{ {1,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {6,11}}
+        \nodeconnection{ {7,10}}
+        \nodeconnection{ {2,3}, {4,13}}
+        \nodeconnection{ {5,9}}
+        \nodeconnection{ {8,12}, {14,15}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,9}, {12,15}}
+        \nodeconnection{ {2,5}, {8,14}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {3,5}, {6,7}, {10,11}, {12,14}}
+        \nodeconnection{ {8,13}}
+        \nodeconnection{ {4,9}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,6}, {8,10}}
+        \nodeconnection{ {7,9}, {11,13}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {4,5}, {6,7}, {8,9}, {10,11}, {12,13}}
+        \nodeconnection{ {7,8}, {9,10}}
+    \end{sortingnetwork}
+ \caption{Greens 16 input sorting networks \cite{hugues-juille}}
+ \label{fig:sort-16}
+\end{figure}
