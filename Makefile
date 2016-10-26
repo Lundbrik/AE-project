@@ -1,5 +1,5 @@
 CXX        = g++
-CXXFLAGS   = -O3 -std=c++11
+CXXFLAGS   = -O3 -fopenmp -std=c++11
 
 
 BUILD	    = build

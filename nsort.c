@@ -9,6 +9,8 @@
                                       COND(y < ax, y, ax); }
 
 //#define comp_swap(x, y) { if (x < y) {int tmp = x; x = y; y = tmp;} }
+
+
 void nsort_16(int data[]) {
     // Layer 1
     comp_swap(data[0], data[1]);
