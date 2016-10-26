@@ -4,12 +4,12 @@ CXXFLAGS   = -O3 -fopenmp -std=c++11
 
 BUILD	    = build
 SOURCES_CPP = test.cpp
-HELPERS     = nsort.h test_helpers.h nsort_tests.h
+HELPERS     = nsort.h test_helpers.h nsort_tests.h fordjohnson.h
 OBJECTS     = $(BUILD)/test.o
 EXECUTABLE  = $(BUILD)/test
 
 EXPERIMENT_CPP = performance_nsort.cpp
-E_HELPERS      = test_helpers.h nsort.h
+E_HELPERS      = test_helpers.h nsort.h fordjohnson.h
 E_OBJECTS      = $(BUILD)/experiment.o
 E_EXECUTABLE   = $(BUILD)/experiment
 
