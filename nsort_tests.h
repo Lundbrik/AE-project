@@ -247,4 +247,3 @@ bool test_all_permutations(int inputs) {
     std::cout << "Sorting network of size: " << inputs << " not found" << std::endl;
     return false;
 }
-

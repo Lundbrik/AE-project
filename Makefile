@@ -9,7 +9,7 @@ OBJECTS     = $(BUILD)/test.o
 EXECUTABLE  = $(BUILD)/test
 
 EXPERIMENT_CPP = performance_nsort.cpp
-E_HELPERS      = test_helpers.h nsort.h
+E_HELPERS      = test_helpers.h nsort.h fordjohnson.h
 E_OBJECTS      = $(BUILD)/experiment.o
 E_EXECUTABLE   = $(BUILD)/experiment
 
