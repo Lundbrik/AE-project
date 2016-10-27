@@ -6,11 +6,74 @@
 #include "test_helpers.h"
 #include <chrono>
 #include "fordjohnson.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std::chrono;
 
+void stdsort(std::vector<int> &vec) {
+	std::sort(vec.begin(), vec.end());
+}
+
+void fjsort(std::vector<int> &vec) {
+	fj::sort<int>(vec, 1);
+}
+
+#define RUNS 10
+std::vector<int> sizes = {2, 4, 6, 8, 10, 12, 14, 16};
+std::vector<std::string> sorternames = {"std::sort", "ford johnson"};
+std::vector<void (*)(std::vector<int>&)> sorters;
+
+void initsorters() {
+	sorters.push_back(stdsort);
+	sorters.push_back(fjsort);
+}
+
+void expoutput() {
+	initsorters();
+	std::ofstream myfile;
+	myfile.open("table.tex");
+	std::vector<std::vector<int>> inputs1, inputs2;
+	time_point<steady_clock> start, end;
+	nanoseconds time;
+	int i,j;
+	myfile << "\\begin{tabular}{|l|";
+	for (std::string n : sorternames) {
+		myfile << "l|";
+	}
+	myfile << "}\n\t";
+	myfile << "size";
+	for (i=0; i < sorternames.size(); i++) {
+		myfile << "&" << sorternames[i];
+	}
+	myfile << "\\\\\n\t";
+	for (int s : sizes) {
+		inputs1 = {};
+		for (i = 0; i < RUNS; i++) {
+            std::vector<int> tmp;
+            push_random(tmp, s);
+            inputs1.push_back(tmp);
+        }
+		inputs2 = inputs1;
+		myfile << s;
+		for (void (*f)(std::vector<int>&) : sorters) {
+			start = steady_clock::now();
+			for (auto vec : inputs1) {
+				f(vec);
+			}
+			end = steady_clock::now();
+			time = duration_cast<nanoseconds>(end - start);
+			myfile << "&" << (time.count()/RUNS);
+		}
+		myfile << "\\\\\n\t";
+	}
+	myfile << "\\end{tabular}";
+	myfile.close();
+}
+
 int main(int argc, char* argv[]) {
     if (argc < 3) {
+		expoutput();
         return 42;
     } else {
 		nanoseconds std_time;
