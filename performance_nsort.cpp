@@ -40,9 +40,9 @@ std::vector<void (*)(std::vector<int>&)> sorters;
 
 void initsorters() {
 	sorters.push_back(stdsort);
+	sorters.push_back(nsort);
 	sorters.push_back(fjsort);
 	sorters.push_back(fjbosort);
-	sorters.push_back(nsort);
 }
 
 void expoutput() {
@@ -64,24 +64,25 @@ void expoutput() {
 	}
 	myfile << "\\hline\\\\\n";
 	for (int s : sizes) {
-		inputs1 = {};
-		for (i = 0; i < RUNS; i++) {
-            std::vector<int> tmp;
-            push_random(tmp, s);
-            inputs1.push_back(tmp);
-        }
-		inputs2 = inputs1;
-		myfile << "\t" << s;
-		for (void (*f)(std::vector<int>&) : sorters) {
-			start = steady_clock::now();
-			for (auto vec : inputs1) {
-				f(vec);
-			}
-			end = steady_clock::now();
-			time = duration_cast<nanoseconds>(end - start);
-			myfile << "&" << (time.count()/RUNS);
-		}
-		myfile << "\\hline\\\\\n";
+	    inputs1 = {};
+	    for (i = 0; i < RUNS; i++) {
+                std::vector<int> tmp;
+                push_random(tmp, s);
+                inputs1.push_back(tmp);
+            }
+            inputs2 = inputs1;
+            myfile << "\t" << s;
+            for (void (*f)(std::vector<int>&) : sorters) {
+                start = steady_clock::now();
+                for (auto vec : inputs1) {
+                        f(vec);
+                }
+                end = steady_clock::now();
+                time = duration_cast<nanoseconds>(end - start);
+                inputs1 = inputs2;
+                myfile << "&" << (time.count()/RUNS);
+            }
+            myfile << "\\hline\\\\\n";
 	}
 	myfile << "\\end{tabular}";
 	myfile.close();
@@ -89,12 +90,13 @@ void expoutput() {
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
-		expoutput();
+        expoutput();
         return 42;
     } else {
-		nanoseconds std_time;
-		nanoseconds nsort_time;
-		nanoseconds fj_time;
+        nanoseconds std_time;
+        nanoseconds nsort_time;
+        nanoseconds fj_time;
+        nanoseconds fjbo_time;
         int inputs = atoi(argv[1]);
         int runs = atoi(argv[2]);
         std::vector<std::vector<int>> inputs1;
@@ -105,11 +107,12 @@ int main(int argc, char* argv[]) {
             inputs1.push_back(tmp);
         }
         auto inputs2 = inputs1;
-		auto inputs3 = inputs2;
+        auto inputs3 = inputs1;
+        auto inputs4 = inputs1;
 
         auto st1 = steady_clock::now();
 
-        for (auto vec : inputs1) {
+        for (auto &vec : inputs1) {
             std::sort(vec.begin(), vec.end());
         }
         auto st2 = steady_clock::now();
@@ -117,7 +120,7 @@ int main(int argc, char* argv[]) {
         {
             std_time = duration_cast<nanoseconds>(st2 - st1);
 
-            std::cout << (std_time.count() / runs) << std::endl;
+            //std::cout << (std_time.count() / runs) << std::endl;
         }
 
         bool found = false;
@@ -125,11 +128,17 @@ int main(int argc, char* argv[]) {
         for (auto nsort : nsorts) {
             if (nsort.inputs == inputs) {
                 nt1 = steady_clock::now();
-                for (auto vec : inputs2) {
+                for (auto &vec : inputs2) {
                     nsort.func(vec);
                 }
                 nt2 = steady_clock::now();
                 found = true;
+
+                for (auto vec : inputs2) {
+                    if (!is_sorted(vec)) {
+                        std::cout << "nsort() failed to sort" << std::endl;
+                    }
+                }
                 break;
             }
         }
@@ -138,28 +147,50 @@ int main(int argc, char* argv[]) {
         } else {
             nsort_time = duration_cast<nanoseconds>(nt2 - nt1);
 
-            std::cout << (nsort_time.count() / runs) << std::endl;
+            //std::cout << (nsort_time.count() / runs) << std::endl;
         }
-		
-		
-		// Ford Johnson
-		auto ft1 = steady_clock::now();
 
-        for (auto vec : inputs3) {
-            fj::sort<int>(vec);
+
+        // Ford Johnson
+        auto ft1 = steady_clock::now();
+
+        for (auto &vec : inputs3) {
+            fj::sort<int>(vec, 1);
         }
         auto ft2 = steady_clock::now();
+        for (auto vec : inputs3) {
+            if (!is_sorted(vec)) {
+                std::cout << "fj::sort() failed to sort" << std::endl;
+                print_vector(vec);
+                break;
+            }
+        }
 
         {
             fj_time = duration_cast<nanoseconds>(ft2 - ft1);
 
-            std::cout << (fj_time.count() / runs) << std::endl;
+            //std::cout << (fj_time.count() / runs) << std::endl;
         }
-		
-		// Writing out
-		std::cout << std::endl << std::endl << std::endl;
-		std::cout << "std sort took " << (std_time.count() / runs) << std::endl;
-		std::cout << "nsort took " << (nsort_time.count() / runs) << std::endl;
-		std::cout << "fj sort took " << (fj_time.count() / runs) << std::endl;
+
+        // BO Ford Johnson
+        auto fbot1 = steady_clock::now();
+
+        for (auto vec : inputs4) {
+            fjbo::sort<int>(vec);
+        }
+        auto fbot2 = steady_clock::now();
+
+        {
+            fjbo_time = duration_cast<nanoseconds>(fbot2 - fbot1);
+
+            //std::cout << (fj_time.count() / runs) << std::endl;
+        }
+
+        // Writing out
+        //std::cout << std::endl << std::endl << std::endl;
+        std::cout << "std sort took " << (std_time.count() / runs) << std::endl;
+        std::cout << "nsort took " << (nsort_time.count() / runs) << std::endl;
+        std::cout << "fj sort took " << (fj_time.count() / runs) << std::endl;
+        std::cout << "fjbo sort took " << (fjbo_time.count() / runs) << std::endl;
     }
 }
