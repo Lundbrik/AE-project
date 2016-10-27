@@ -64,7 +64,7 @@ namespace fj {
 		
 		int ind = i + floor(numofelements/2)*J;
 		//std::cout << "  ind = " << ind << "\n";
-		if (vec[a] - vec[ind] > 0) {
+		/*if (vec[a] - vec[ind] > 0) {
 			ind += J;
 			if (j < ind) {
 				ind = j;
@@ -77,26 +77,40 @@ namespace fj {
 				ind = i;
 			}
 			return binarySearch<T, C>(vec, i, ind, J);
-		}
+		}*/
 		
 		// Branchless version
-		/*std::cout << ind << "\n";
+		//std::cout << ind << "\n";
 		bool test = (vec[a] - vec[ind] > 0);
 		ind += test*J;
 		ind -= (1-test)*J;
-		std::cout << ind << " " << test << " " << J << "\n";
+		//std::cout << ind << " " << test << " " << J << "\n";
 		bool testi = (ind < i);
 		bool testj = (ind > j);
 		ind = testi*i + testj*j + (1 - (testi || testj))*ind;
 		int start = (1-test)*i + test*ind;
 		int end = test*j + (1-test)*ind;
-		std::cout << "Recursing on (" << start << ", " << end << ", " << ind << ")\n";
-		return binarySearch<T, C>(vec, start, end, J);*/
+		//std::cout << "Recursing on (" << start << ", " << end << ", " << ind << ")\n";
+		return binarySearch<T, C>(vec, start, end, J);
 	}
 
 	template<typename T, class C = std::vector<T>>
 	static void shift(C &vec, int a, int i, int J) {
-		if (a < i) {
+		printvec<int>(vec, 1);
+		std::cout << "shifting(" << a << ", " << i << ")\n";
+		bool test = a < i;
+		i -= (J-1)*(1-test);
+		for (int t = a-(J-1)*(1-test); (1-(1-test)*2)*t >= (a-(J-1))*(test) - a*(1-test); t += (1-test*2)) {
+			T temp = vec[t];
+			for (int j = t + (1 - (1-test)*2) ; (1 - (1-test)*2)*j <= (1 - (1-test)*2)*i ; j += (1-(1-test)*2)) {
+				vec[j + (1 - test*2)] = vec[j];
+			}
+			vec[i] = temp;
+			i += (1 - test*2);
+		}
+		printvec<int>(vec, 1);
+		
+		/*if (a < i) {
 			for (int t = a; t>=a-(J-1); t--) {
 				T temp = vec[t];
 				for (int j = t+1 ; j <= i ; j++) {
@@ -115,7 +129,7 @@ namespace fj {
 				vec[i] = temp;
 				i++;
 			}
-		}
+		}*/
 	}
 
 	template<typename T, class C = std::vector<T>>
@@ -146,24 +160,31 @@ namespace fj {
 		int curlog = 1;
 		int nei = 0;
 		for (i=2; i*J - 1 < size/2+1; i++) {
-			if (log2(i+1+nei) >= curlog+1 || !((i+1)*J - 1 < size/2+1)) {
+			/*if (log2(i+1+nei) >= curlog+1 || !((i+1)*J - 1 < size/2+1)) {
 				for (j=i-1; j > nei; j--) {
 					bindex.push_back((2*j+1)*J - 1 - nei*J);
 				}
 				nei += (i - 1) - nei;
 				curlog = floor(log2(i+1+nei));
+			}*/
+			// Branchless version
+			bool test = (log2(i+1+nei) >= curlog+1 || !((i+1)*J - 1 < size/2+1));
+			for (j=i-1; j > nei && test; j--) {
+				bindex.push_back((2*j+1)*J - 1 - nei*J);
 			}
+			nei += ((i - 1) - nei)*test;
+			curlog = (floor(log2(i+1+nei)))*test;
 		}
 		
-		std::cout << "bindex for " << J << ":\n";
-		printvec<T>(bindex);
+		//std::cout << "bindex for " << J << ":\n";
+		//printvec<T>(bindex);
 		
-		std::cout << "\n";
+		//std::cout << "\n";
 		int end = size-1;
 		int prev = NULL;
 		for (i=0; i < bindex.size(); i++) {
 			bindex[i] -= (bindex[i]>end);
-			std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
+			//std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
 			shift<T,C>(vec, bindex[i], end, J);
 			end -= J;
 			for (j=i-1 ; j>=0 && bindex[i] < bindex[j]; j--) {
@@ -171,18 +192,18 @@ namespace fj {
 			}
 		}
 		
-		printvec<T>(vec);
+		//printvec<T>(vec);
 		
 		end = size-1;
 		nei = 0;
 		for (int e : bindex) {
-			std::cout << "e = " << e << ", nei = " << nei << ", J = " << 1 << "\n";
+			//std::cout << "e = " << e << ", nei = " << nei << ", J = " << 1 << "\n";
 			int t = (e-J)+nei*J;
 			int ind = binarySearch<T, C>(vec, (J-1), t, J);
-			std::cout << "ind = " << ind << " t = " << t << "\n";
+			//std::cout << "ind = " << ind << " t = " << t << "\n";
 			shift<T, C>(vec, end, ind, J);
 			nei++;
-			printvec<T>(vec);
+			//printvec<T>(vec);
 		}
 		
 		//printvec<T>(vec, J);
