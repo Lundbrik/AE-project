@@ -90,6 +90,7 @@ void expoutput() {
 }
 
 int main(int argc, char* argv[]) {
+    srand(time(NULL));
     if (argc < 3) {
         expoutput();
         return 42;
@@ -146,8 +147,6 @@ int main(int argc, char* argv[]) {
             for (auto vec : inputs5) {
                 if (!is_sorted(vec)) {
                     std::cout << "fsort() failed to sort" << std::endl;
-                    print_vector(inputs6[0]);
-                    print_vector(vec);
                     break;
                 }
             }

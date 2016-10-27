@@ -57,29 +57,23 @@ void fsort_8(std::vector<T> &data) {
             }
         }
     } else {
+        std::swap(data[3], data[4]);
+        std::swap(data[2], data[3]); // A B E C D
         // A > E
-        if (data[0] > data[4]) {
+        if (data[0] > data[2]) {
+            std::swap(data[1], data[2]);
+            std::swap(data[0], data[1]); // E A B C D
             // B > C
-            if (data[1] > data[2]) {
-                std::swap(data[1], data[4]);
-                // B > D
-                if (data[4] > data[3]) {
-                    std::swap(data[0], data[1]);
-                } else {
-                    std::swap(data[0], data[1]);
-                    std::swap(data[3], data[4]);
-                }
-            } else {
-                std::swap(data[3], data[4]);
+            if (data[2] > data[3]) {
                 std::swap(data[2], data[3]);
-                std::swap(data[1], data[2]);
-                std::swap(data[0], data[1]);
+                // B > D
+                if (data[3] > data[4]) {
+                    std::swap(data[3], data[4]); // E A C D B
+                }
             }
-        } else {
-            std::swap(data[3], data[4]);
-            std::swap(data[2], data[3]);
+        } else { // A B E C D
             // B > C
-            if (data[1] > data[2]) {
+            if (data[1] > data[3]) {
                 std::swap(data[1], data[2]);
                 std::swap(data[2], data[3]);
                 if (data[3] > data[4])
@@ -229,29 +223,23 @@ void fsort_7(std::vector<T> &data) {
             }
         }
     } else {
+        std::swap(data[3], data[4]);
+        std::swap(data[2], data[3]); // A B E C D
         // A > E
-        if (data[0] > data[4]) {
+        if (data[0] > data[2]) {
+            std::swap(data[1], data[2]);
+            std::swap(data[0], data[1]); // E A B C D
             // B > C
-            if (data[1] > data[2]) {
-                std::swap(data[1], data[4]);
-                // B > D
-                if (data[4] > data[3]) {
-                    std::swap(data[0], data[1]);
-                } else {
-                    std::swap(data[0], data[1]);
-                    std::swap(data[3], data[4]);
-                }
-            } else {
-                std::swap(data[3], data[4]);
+            if (data[2] > data[3]) {
                 std::swap(data[2], data[3]);
-                std::swap(data[1], data[2]);
-                std::swap(data[0], data[1]);
+                // B > D
+                if (data[3] > data[4]) {
+                    std::swap(data[3], data[4]); // E A C D B
+                }
             }
-        } else {
-            std::swap(data[3], data[4]);
-            std::swap(data[2], data[3]);
+        } else { // A B E C D
             // B > C
-            if (data[1] > data[2]) {
+            if (data[1] > data[3]) {
                 std::swap(data[1], data[2]);
                 std::swap(data[2], data[3]);
                 if (data[3] > data[4])
@@ -373,29 +361,23 @@ void fsort_6(std::vector<T> &data) {
             }
         }
     } else {
+        std::swap(data[3], data[4]);
+        std::swap(data[2], data[3]); // A B E C D
         // A > E
-        if (data[0] > data[4]) {
+        if (data[0] > data[2]) {
+            std::swap(data[1], data[2]);
+            std::swap(data[0], data[1]); // E A B C D
             // B > C
-            if (data[1] > data[2]) {
-                std::swap(data[1], data[4]);
-                // B > D
-                if (data[4] > data[3]) {
-                    std::swap(data[0], data[1]);
-                } else {
-                    std::swap(data[0], data[1]);
-                    std::swap(data[3], data[4]);
-                }
-            } else {
-                std::swap(data[3], data[4]);
+            if (data[2] > data[3]) {
                 std::swap(data[2], data[3]);
-                std::swap(data[1], data[2]);
-                std::swap(data[0], data[1]);
+                // B > D
+                if (data[3] > data[4]) {
+                    std::swap(data[3], data[4]); // E A C D B
+                }
             }
-        } else {
-            std::swap(data[3], data[4]);
-            std::swap(data[2], data[3]);
+        } else { // A B E C D
             // B > C
-            if (data[1] > data[2]) {
+            if (data[1] > data[3]) {
                 std::swap(data[1], data[2]);
                 std::swap(data[2], data[3]);
                 if (data[3] > data[4])
@@ -487,29 +469,23 @@ void fsort_5(std::vector<T> &data) {
             }
         }
     } else {
+        std::swap(data[3], data[4]);
+        std::swap(data[2], data[3]); // A B E C D
         // A > E
-        if (data[0] > data[4]) {
+        if (data[0] > data[2]) {
+            std::swap(data[1], data[2]);
+            std::swap(data[0], data[1]); // E A B C D
             // B > C
-            if (data[1] > data[2]) {
-                std::swap(data[1], data[4]);
-                // B > D
-                if (data[4] > data[3]) {
-                    std::swap(data[0], data[1]);
-                } else {
-                    std::swap(data[0], data[1]);
-                    std::swap(data[3], data[4]);
-                }
-            } else {
-                std::swap(data[3], data[4]);
+            if (data[2] > data[3]) {
                 std::swap(data[2], data[3]);
-                std::swap(data[1], data[2]);
-                std::swap(data[0], data[1]);
+                // B > D
+                if (data[3] > data[4]) {
+                    std::swap(data[3], data[4]); // E A C D B
+                }
             }
-        } else {
-            std::swap(data[3], data[4]);
-            std::swap(data[2], data[3]);
+        } else { // A B E C D
             // B > C
-            if (data[1] > data[2]) {
+            if (data[1] > data[3]) {
                 std::swap(data[1], data[2]);
                 std::swap(data[2], data[3]);
                 if (data[3] > data[4])
