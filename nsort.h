@@ -1,3 +1,6 @@
+#ifndef NSORT_H
+#define NSORT_H
+
 #include <vector>
 
 #define comp_swap(a, b) if (a>b) std::swap(a,b)
@@ -704,3 +707,4 @@ template <class T>
 void nsort_2(std::vector<T> &data) {
     comp_swap(data[0], data[1]);
 }
+#endif
