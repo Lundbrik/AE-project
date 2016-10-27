@@ -5,9 +5,10 @@
 #include <algorithm>
 #include "test_helpers.h"
 #include <chrono>
-#include "fordjohnson.h"
 #include <iostream>
 #include <fstream>
+#include "fordjohnson.h"
+#include "fordjohnsonbo.h"
 
 using namespace std::chrono;
 
@@ -19,14 +20,19 @@ void fjsort(std::vector<int> &vec) {
 	fj::sort<int>(vec, 1);
 }
 
-#define RUNS 10
+void fjbosort(std::vector<int> &vec) {
+	fjbo::sort<int>(vec, 1);
+}
+
+#define RUNS 100
 std::vector<int> sizes = {2, 4, 6, 8, 10, 12, 14, 16};
-std::vector<std::string> sorternames = {"std::sort", "ford johnson"};
+std::vector<std::string> sorternames = {"std::sort", "ford johnson", "fj branch optimized"};
 std::vector<void (*)(std::vector<int>&)> sorters;
 
 void initsorters() {
 	sorters.push_back(stdsort);
 	sorters.push_back(fjsort);
+	sorters.push_back(fjbosort);
 }
 
 void expoutput() {

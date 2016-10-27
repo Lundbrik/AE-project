@@ -1,14 +1,14 @@
 #ifndef FORDJOHNSONBO_H
 #define FORDJOHNSONBO_H
 
-namespace fjbo {
+#include <stdio.h>
+#include <stdlib.h> 
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <time.h>
 
-	#include <stdio.h>
-	#include <stdlib.h> 
-	#include <iostream>
-	#include <vector>
-	#include <math.h>
-	#include <time.h>
+namespace fjbo {
 
 	template<typename T, class C = std::vector<T>>
 	static void printvec(C &vec, int J=1) {
@@ -96,8 +96,8 @@ namespace fjbo {
 
 	template<typename T, class C = std::vector<T>>
 	static void shift(C &vec, int a, int i, int J) {
-		printvec<int>(vec, 1);
-		std::cout << "shifting(" << a << ", " << i << ")\n";
+		//printvec<int>(vec, 1);
+		//std::cout << "shifting(" << a << ", " << i << ")\n";
 		bool test = a < i;
 		i -= (J-1)*(1-test);
 		for (int t = a-(J-1)*(1-test); (1-(1-test)*2)*t >= (a-(J-1))*(test) - a*(1-test); t += (1-test*2)) {
@@ -108,7 +108,7 @@ namespace fjbo {
 			vec[i] = temp;
 			i += (1 - test*2);
 		}
-		printvec<int>(vec, 1);
+		//printvec<int>(vec, 1);
 		
 		/*if (a < i) {
 			for (int t = a; t>=a-(J-1); t--) {

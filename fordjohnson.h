@@ -1,14 +1,14 @@
 #ifndef FORDJOHNSON_H
 #define FORDJOHNSON_H
 
-namespace fj {
+#include <stdio.h>
+#include <stdlib.h> 
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <time.h>
 
-	#include <stdio.h>
-	#include <stdlib.h> 
-	#include <iostream>
-	#include <vector>
-	#include <math.h>
-	#include <time.h>
+namespace fj {
 
 	template<typename T, class C = std::vector<T>>
 	static void printvec(C &vec, int J=1) {
