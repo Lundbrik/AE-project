@@ -27,7 +27,8 @@ void fsort_8(std::vector<T> &data) {
         if (data[4] > data[3]) {
             // B > D
             if (data[1] > data[3]) {
-                std::swap(data[1], data[3]);
+                std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
                 // B > E
                 if (data[3] > data[4]) {
                     std::swap(data[3], data[4]);
@@ -77,9 +78,17 @@ void fsort_8(std::vector<T> &data) {
         } else {
             std::swap(data[3], data[4]);
             std::swap(data[2], data[3]);
-            // B > E
-            if (data[1] > data[4]) {
+            // B > C
+            if (data[1] > data[2]) {
                 std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
+                if (data[3] > data[4])
+                    std::swap(data[3], data[4]);
+            } else {
+                // B > E
+                if (data[1] > data[2]) {
+                    std::swap(data[1], data[2]);
+                }
             }
         }
     }
@@ -135,7 +144,6 @@ void fsort_8(std::vector<T> &data) {
     }
 
     // Insert 8th element
-
     if (data[3] > data[7]) {
         std::swap(data[6], data[7]);
         std::swap(data[5], data[6]);
@@ -191,7 +199,8 @@ void fsort_7(std::vector<T> &data) {
         if (data[4] > data[3]) {
             // B > D
             if (data[1] > data[3]) {
-                std::swap(data[1], data[3]);
+                std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
                 // B > E
                 if (data[3] > data[4]) {
                     std::swap(data[3], data[4]);
@@ -241,9 +250,17 @@ void fsort_7(std::vector<T> &data) {
         } else {
             std::swap(data[3], data[4]);
             std::swap(data[2], data[3]);
-            // B > E
-            if (data[1] > data[4]) {
+            // B > C
+            if (data[1] > data[2]) {
                 std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
+                if (data[3] > data[4])
+                    std::swap(data[3], data[4]);
+            } else {
+                // B > E
+                if (data[1] > data[2]) {
+                    std::swap(data[1], data[2]);
+                }
             }
         }
     }
@@ -326,7 +343,8 @@ void fsort_6(std::vector<T> &data) {
         if (data[4] > data[3]) {
             // B > D
             if (data[1] > data[3]) {
-                std::swap(data[1], data[3]);
+                std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
                 // B > E
                 if (data[3] > data[4]) {
                     std::swap(data[3], data[4]);
@@ -376,9 +394,17 @@ void fsort_6(std::vector<T> &data) {
         } else {
             std::swap(data[3], data[4]);
             std::swap(data[2], data[3]);
-            // B > E
-            if (data[1] > data[4]) {
+            // B > C
+            if (data[1] > data[2]) {
                 std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
+                if (data[3] > data[4])
+                    std::swap(data[3], data[4]);
+            } else {
+                // B > E
+                if (data[1] > data[2]) {
+                    std::swap(data[1], data[2]);
+                }
             }
         }
     }
@@ -431,7 +457,8 @@ void fsort_5(std::vector<T> &data) {
         if (data[4] > data[3]) {
             // B > D
             if (data[1] > data[3]) {
-                std::swap(data[1], data[3]);
+                std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
                 // B > E
                 if (data[3] > data[4]) {
                     std::swap(data[3], data[4]);
@@ -481,9 +508,17 @@ void fsort_5(std::vector<T> &data) {
         } else {
             std::swap(data[3], data[4]);
             std::swap(data[2], data[3]);
-            // B > E
-            if (data[1] > data[4]) {
+            // B > C
+            if (data[1] > data[2]) {
                 std::swap(data[1], data[2]);
+                std::swap(data[2], data[3]);
+                if (data[3] > data[4])
+                    std::swap(data[3], data[4]);
+            } else {
+                // B > E
+                if (data[1] > data[2]) {
+                    std::swap(data[1], data[2]);
+                }
             }
         }
     }
@@ -517,31 +552,9 @@ void fsort_4(std::vector<T> &data) {
             std::swap(data[1], data[2]);
 
             if (data[2] > data[3])
-                std::swap(data[2], data[3])
+                std::swap(data[2], data[3]);
         }
     }
 
     return;
-}
-
-
-
-template <class T>
-void fsort(std::vector<T> &data) {
-    switch (data.size()) {
-        case 8:
-            nsort_8(data);
-            break;
-        case 7:
-            nsort_7(data);
-            break;
-        case 6:
-            nsort_6(data);
-            break;
-        case 5:
-            nsort_5(data);
-            break;
-        default:
-            std::sort(data.begin(), data.end());
-    }
 }

@@ -9,6 +9,7 @@
 #include <fstream>
 #include "fordjohnson.h"
 #include "fordjohnsonbo.h"
+#include "small.cpp"
 
 using namespace std::chrono;
 
@@ -93,6 +94,7 @@ int main(int argc, char* argv[]) {
         expoutput();
         return 42;
     } else {
+        nanoseconds fs_time;
         nanoseconds std_time;
         nanoseconds nsort_time;
         nanoseconds fj_time;
@@ -109,6 +111,48 @@ int main(int argc, char* argv[]) {
         auto inputs2 = inputs1;
         auto inputs3 = inputs1;
         auto inputs4 = inputs1;
+        auto inputs5 = inputs1;
+        auto inputs6 = inputs1;
+
+        bool fs = false;
+        if (inputs > 3 && inputs < 9) {
+            std::function<void(std::vector<int>&)> fsort;
+            switch(inputs) {
+                case 8:
+                    fsort = fsort_8<int>;
+                    break;
+                case 7:
+                    fsort = fsort_7<int>;
+                    break;
+                case 6:
+                    fsort = fsort_6<int>;
+                    break;
+                case 5:
+                    fsort = fsort_5<int>;
+                    break;
+                case 4:
+                    fsort = fsort_4<int>;
+                    break;
+            }
+            auto fst1 = steady_clock::now();
+
+            for (auto &vec : inputs5) {
+                fsort(vec);
+            }
+            auto fst2 = steady_clock::now();
+            fs_time = duration_cast<nanoseconds>(fst2 - fst1);
+            fs = true;
+
+            for (auto vec : inputs5) {
+                if (!is_sorted(vec)) {
+                    std::cout << "fsort() failed to sort" << std::endl;
+                    print_vector(inputs6[0]);
+                    print_vector(vec);
+                    break;
+                }
+            }
+        }
+
 
         auto st1 = steady_clock::now();
 
@@ -190,6 +234,7 @@ int main(int argc, char* argv[]) {
         //std::cout << std::endl << std::endl << std::endl;
         std::cout << "std sort took " << (std_time.count() / runs) << std::endl;
         std::cout << "nsort took " << (nsort_time.count() / runs) << std::endl;
+        if (fs) std::cout << "fsort took " << (fs_time.count() / runs) << std::endl;
         std::cout << "fj sort took " << (fj_time.count() / runs) << std::endl;
         std::cout << "fjbo sort took " << (fjbo_time.count() / runs) << std::endl;
     }
