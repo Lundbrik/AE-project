@@ -24,21 +24,31 @@ void fjbosort(std::vector<int> &vec) {
 	fjbo::sort<int>(vec, 1);
 }
 
+void nsort(std::vector<int> &vec) {
+	for (auto nsort : nsorts) {
+		if (nsort.inputs == vec.size()) {
+			nsort.func(vec);
+			return;
+		}
+	}
+}
+
 #define RUNS 100
 std::vector<int> sizes = {2, 4, 6, 8, 10, 12, 14, 16};
-std::vector<std::string> sorternames = {"std::sort", "ford johnson", "fj branch optimized"};
+std::vector<std::string> sorternames = {"std::sort", "Sorting networks", "ford johnson", "fj branch optimized"};
 std::vector<void (*)(std::vector<int>&)> sorters;
 
 void initsorters() {
 	sorters.push_back(stdsort);
 	sorters.push_back(fjsort);
 	sorters.push_back(fjbosort);
+	sorters.push_back(nsort);
 }
 
 void expoutput() {
 	initsorters();
 	std::ofstream myfile;
-	myfile.open("table.tex");
+	myfile.open("smalltable.tex");
 	std::vector<std::vector<int>> inputs1, inputs2;
 	time_point<steady_clock> start, end;
 	nanoseconds time;
@@ -52,7 +62,7 @@ void expoutput() {
 	for (i=0; i < sorternames.size(); i++) {
 		myfile << "&" << sorternames[i];
 	}
-	myfile << "\\\\\n\t";
+	myfile << "\\\\\n";
 	for (int s : sizes) {
 		inputs1 = {};
 		for (i = 0; i < RUNS; i++) {
@@ -61,7 +71,7 @@ void expoutput() {
             inputs1.push_back(tmp);
         }
 		inputs2 = inputs1;
-		myfile << s;
+		myfile << "\t" << s;
 		for (void (*f)(std::vector<int>&) : sorters) {
 			start = steady_clock::now();
 			for (auto vec : inputs1) {
@@ -71,7 +81,7 @@ void expoutput() {
 			time = duration_cast<nanoseconds>(end - start);
 			myfile << "&" << (time.count()/RUNS);
 		}
-		myfile << "\\\\\n\t";
+		myfile << "\\\\\n";
 	}
 	myfile << "\\end{tabular}";
 	myfile.close();
