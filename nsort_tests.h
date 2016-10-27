@@ -187,6 +187,91 @@ bool nsort_test12_2() {
     return true;
 }
 
+bool nsort_test13_1() {
+    std::vector<int> data    = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+
+    nsort_13(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test13_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 13);
+
+        auto orig = data;
+
+        nsort_15(data);
+        if (!is_sorted(data)) {
+            printf("nsort13 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
+
+bool nsort_test14_1() {
+    std::vector<int> data    = {14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+
+    nsort_14(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test14_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 14);
+
+        auto orig = data;
+
+        nsort_15(data);
+        if (!is_sorted(data)) {
+            printf("nsort14 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
+bool nsort_test15_1() {
+    std::vector<int> data    = {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+
+    nsort_15(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test15_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 15);
+
+        auto orig = data;
+
+        nsort_15(data);
+        if (!is_sorted(data)) {
+            printf("nsort15 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
 bool nsort_test16_1() {
     std::vector<int> data    = {16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
     std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
@@ -212,7 +297,6 @@ bool nsort_test16_2() {
             return false;
         }
     }
-
     return true;
 }
 

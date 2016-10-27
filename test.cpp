@@ -20,7 +20,9 @@ int main(int argc, char* argv[]) {
             gtest(nsort_test8_1), gtest(nsort_test8_2), gtest(nsort_test9_1),
             gtest(nsort_test9_2), gtest(nsort_test10_1), gtest(nsort_test10_2),
             gtest(nsort_test11_1), gtest(nsort_test11_2), gtest(nsort_test12_1),
-            gtest(nsort_test12_2), gtest(nsort_test16_1), gtest(nsort_test16_2)
+            gtest(nsort_test12_2), gtest(nsort_test13_1), gtest(nsort_test13_2),
+            gtest(nsort_test14_1), gtest(nsort_test14_2), gtest(nsort_test15_1),
+            gtest(nsort_test15_2), gtest(nsort_test16_1), gtest(nsort_test16_2)
         };
 
     if (argc < 2) {
