@@ -145,12 +145,11 @@ namespace fj {
 		int prev = NULL;
 		for (i=0; i < bindex.size(); i++) {
 			//std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
-			if (bindex[i] <= end) {
-				shift<T,C>(vec, bindex[i], end, J);
-				end -= J;
-				for (j=i-1 ; j>=0 && bindex[i] < bindex[j]; j--) {
-					bindex[j] -= J;
-				}
+			bindex[i] -= (bindex[i]>end);
+			shift<T,C>(vec, bindex[i], end, J);
+			end -= J;
+			for (j=i-1 ; j>=0 && bindex[i] < bindex[j]; j--) {
+				bindex[j] -= J;
 			}
 		}
 		
