@@ -36,6 +36,7 @@ void bitonic_sort(std::vector<T> &data, int log_n) {
         int elems_block = 2 << (k-1);
 
         // Vectical layers (blocks)
+#pragma omp parallel for
         for (int lay = 0; lay < vert_blocks; lay++) { // Should be parallel
             int offset = lay * (elems / vert_blocks);
 
