@@ -57,12 +57,12 @@ void expoutput() {
 	for (std::string n : sorternames) {
 		myfile << "l|";
 	}
-	myfile << "}\n\t";
+	myfile << "}\\hline\n\t";
 	myfile << "size";
 	for (i=0; i < sorternames.size(); i++) {
 		myfile << "&" << sorternames[i];
 	}
-	myfile << "\\\\\n";
+	myfile << "\\hline\\\\\n";
 	for (int s : sizes) {
 		inputs1 = {};
 		for (i = 0; i < RUNS; i++) {
@@ -81,7 +81,7 @@ void expoutput() {
 			time = duration_cast<nanoseconds>(end - start);
 			myfile << "&" << (time.count()/RUNS);
 		}
-		myfile << "\\\\\n";
+		myfile << "\\hline\\\\\n";
 	}
 	myfile << "\\end{tabular}";
 	myfile.close();
