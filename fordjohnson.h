@@ -51,12 +51,13 @@ namespace fj {
 		
 		if (numofelements == 1) {
 			//std::cout << "\n";
-			if (vec[a] - vec[i] > 0) {
+			/*if (vec[a] - vec[i] > 0) {
 				return i+J;
 			} else {
 				return i;
-			}
-			//return i + (vec[a] - vec[i] > 0)*J;
+			}*/
+			// Branchless version
+			return i + (vec[a] - vec[i] > 0)*J;
 		}
 		
 		int ind = i + floor(numofelements/2)*J;
@@ -141,7 +142,7 @@ namespace fj {
 		//std::cout << "bindex for " << J << ":\n";
 		//printvec<T>(bindex);
 		
-		std::cout << "\n";
+		//std::cout << "\n";
 		int end = size-1;
 		int prev = NULL;
 		for (i=0; i < bindex.size(); i++) {
