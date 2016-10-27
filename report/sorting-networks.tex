@@ -1,0 +1,12 @@
+\section{Sorting networks}
+
+\subsection{Testing}
+Since it can be quite hard to see from the code if a specific sorting networks
+should work, testing them is quite important. So for all the implemented
+sorting networks for inputs $>4$ there is a test for a reserse sorted list, and
+for a number of runs on random inputs. Futhermore there is the possibility to
+run a full permutation test, that is testing the sorting networks for all
+possible permutations of inputs of that size, though this should be possible to
+make in $O(2^n)$ instead of the current $O(n!)$ due to the Zero-one principle.
+This permutation test has been run on all the implemented sorting networks up
+to and including \ttt{nsort\_13()}
