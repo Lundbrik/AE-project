@@ -16,11 +16,11 @@ namespace fj {
 		for (int e : vec) {
 			j--;
 			if (j < 1) {
-				//std::cout << e << ", ";
+				std::cout << e << ", ";
 				j=J;
 			}
 		}
-		//std::cout << "\n";
+		std::cout << "\n";
 		return;
 	}
 
@@ -46,6 +46,8 @@ namespace fj {
 	static int binarySearch(C &vec, int i, int j, int J) {
 		int numofelements = (j-i)/J+1;
 		int a = vec.size()-1;
+		
+		//std::cout << "Entering with (" << i << ", " << j << ")\n";
 
 		//std::cout << "  noe = " << numofelements;
 		
@@ -76,6 +78,20 @@ namespace fj {
 			}
 			return binarySearch<T, C>(vec, i, ind, J);
 		}
+		
+		// Branchless version
+		/*std::cout << ind << "\n";
+		bool test = (vec[a] - vec[ind] > 0);
+		ind += test*J;
+		ind -= (1-test)*J;
+		std::cout << ind << " " << test << " " << J << "\n";
+		bool testi = (ind < i);
+		bool testj = (ind > j);
+		ind = testi*i + testj*j + (1 - (testi || testj))*ind;
+		int start = (1-test)*i + test*ind;
+		int end = test*j + (1-test)*ind;
+		std::cout << "Recursing on (" << start << ", " << end << ", " << ind << ")\n";
+		return binarySearch<T, C>(vec, start, end, J);*/
 	}
 
 	template<typename T, class C = std::vector<T>>
@@ -139,63 +155,38 @@ namespace fj {
 			}
 		}
 		
-		//std::cout << "bindex for " << J << ":\n";
-		//printvec<T>(bindex);
+		std::cout << "bindex for " << J << ":\n";
+		printvec<T>(bindex);
 		
-		//std::cout << "\n";
+		std::cout << "\n";
 		int end = size-1;
 		int prev = NULL;
 		for (i=0; i < bindex.size(); i++) {
-			//std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
-			if (bindex[i] <= end) {
-				shift<T,C>(vec, bindex[i], end, J);
-				end -= J;
-				for (j=i-1 ; j>=0 && bindex[i] < bindex[j]; j--) {
-					bindex[j] -= J;
-				}
+			bindex[i] -= (bindex[i]>end);
+			std::cout << "Shifted " << bindex[i] << " to " << end << "\n";
+			shift<T,C>(vec, bindex[i], end, J);
+			end -= J;
+			for (j=i-1 ; j>=0 && bindex[i] < bindex[j]; j--) {
+				bindex[j] -= J;
 			}
 		}
 		
-		//printvec<T>(vec);
+		printvec<T>(vec);
 		
 		end = size-1;
 		nei = 0;
 		for (int e : bindex) {
-			//std::cout << "e = " << e << ", nei = " << nei << ", J = " << 1 << "\n";
+			std::cout << "e = " << e << ", nei = " << nei << ", J = " << 1 << "\n";
 			int t = (e-J)+nei*J;
 			int ind = binarySearch<T, C>(vec, (J-1), t, J);
-			//std::cout << "ind = " << ind << " t = " << t << "\n";
+			std::cout << "ind = " << ind << " t = " << t << "\n";
 			shift<T, C>(vec, end, ind, J);
 			nei++;
-			//printvec<T>(vec);
+			printvec<T>(vec);
 		}
 		
 		//printvec<T>(vec, J);
 		return;
 	}
-
-	/*int main (int argc, char *argv[])
-	{
-		const int HIGHNUM = 50;
-		int i;
-		std::vector<int> vec;
-		
-		if (argc < 2) {
-			std::cout << "Usage: FordJohnson int";
-			return 0;
-		}
-		int numofelements = atoi(argv[1]);
-		srand(time(NULL));
-		for (i = 0; i < numofelements; i++) {
-			vec.push_back(rand() % HIGHNUM + 1);
-		}
-		std::cout << "Initial vector\n";
-		printvec<int>(vec);
-		
-		sort<int>(vec);
-		std::cout << "Finished sorting\n";
-		printvec<int>(vec);
-		return 0;
-	}*/
 }
 #endif
