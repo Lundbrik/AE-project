@@ -1,6 +1,73 @@
 \section{Parallel}
-In this section, we look at implemnting parallel versions of known sorting
-algorithms, and compare them with different sequential versions.
+In this section, we will be looking at parallelising sorting algorithms. We
+will be looking at sorting elements residing within the \texttt{vector} data
+structure. Since we are trying to shave off time, we start by looking into
+different approaches to memory management, allocation and access. From there we
+will be implementing sequential versions of Quicksolt and Mergesort. Then we
+will be parallelising these algorithms, and finally combine a combination of
+both.
+
+\subsection{Approaches to memory allocation, management and access}
+Here we will be looking at inserting into a new empty array, moving data from
+one \texttt{vector} to another, moving data from one \texttt{vector} into an
+empty one and extracting a subset \texttt{vector} from a \texttt{vector}.
+
+\subsubsection{Memory allocation}
+Within the different algorithms, we sometimes want to insert one element at a
+time into a \texttt{vector}. We have two approaches: calling \texttt{vector.insert()}
+one element at a time, and calling \texttt{vector.push\_back()}. For each we look at
+the performance with and without calling \texttt{vector.reserve()}.
+
+We have \texttt{vector.insert()}:
+\begin{center}
+aoeu!
+\end{center}
+Here we see that calling \texttt{vector.reserve()} prior to the operations benefit the
+performance.
+
+Then, we have \texttt{vector.push\_back()}:
+\begin{center}
+aoeu!
+\end{center}
+Again, we see that calling \texttt{vector.reserve()} prior to the operations benefit the
+performance.
+
+To make sure, we have the graph containing both:
+\begin{center}
+aoeu!
+\end{center}
+From this graph, we see that calling \texttt{vector.push\_back()} gives the
+best performance.
+
+\subsubsection{Memory management and access}
+When we want to move data from one \texttt{vector} to another, not empty,
+\texttt{vector}. In these tests, we move a copy of a \texttt{vector} into the
+original \texttt{vector}. We have following three approaches: manual move using
+a for loop and using \texttt{vector.insert()}. For the manual move, we have
+where we call \texttt{vector.size()} in the loop condition, and where we store
+it in a variable before the loop. For insert, we have where we do and do not
+call \texttt{vector.reserve()}.
+
+Manual move:
+\begin{center}
+aoeu
+\end{center}
+Here, we see that moving the call to \texttt{vector.size()} clearly improves
+the performance.
+
+\texttt{vector.insert()}:
+\begin{center}
+aoeu
+\end{center}
+strangely enough, even though we are moving a copy, calling
+\texttt{vector.reserve()} beforehand improves performance.
+
+Finally, we compare the two best:
+\begin{center}
+aoeu
+\end{center}
+Here, we see that the manual move clearly beats the call to
+\texttt{vector.insert()}
 
 \subsection{Quicksort}
 Quicksort is an algorithm, which is known to be good in practice. The
@@ -62,7 +129,7 @@ vector and the other half into the original input.
 
 \subsection{Sequential}
 We started by making a normal sequential implementation. This implementation
-worked very well, both against Quicksort and \ttt{std::sort()}.
+worked very well, both against Quicksort and \texttt{std::sort()}.
 
 \subsection{Limited parallel}
 We took the same initial approach to parallizing as in the limited parallel

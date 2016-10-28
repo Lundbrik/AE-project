@@ -1,4 +1,93 @@
 \section{Sorting networks}
+Sorting networks, are networks with some number of inputs, that then using
+connections for comparison and swaps, sort the inputs. They are usually
+depicted as seen in Figure \ref{fig:sort-network1}, where the horizontal lines
+are the inputs, and the vertical lines are the comparators, the comparators
+compare the two inputs that it is connected to, and then swap the values if the
+value for the lower input is lower than the value for the upper input.
+\begin{figure}[htb]
+    \centering
+    \begin{sortingnetwork}{4}{0.4}
+        \nodeconnection{ {1,2}, {3,4}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {1,3}}
+        \nodeconnection{ {2,4}}
+        \addtocounter{sncolumncounter}{2}
+        \nodeconnection{ {2,3}}
+    \end{sortingnetwork}
+    \caption{4-input}
+    \label{fig:sort-network1}
+\end{figure}
+
+\subsection{Implementation}
+We have implemented sorting networks for inputs from 2 up to 16 in
+\ttt{nsort.h}, with the ones for inputs 2 to 9 being optimal
+\cite{CCFS-2014}\cite{ron-zeno} in length (number of comparators). The rest,
+inputs 10 to 16 was the best we could find with respect to length
+\cite{hugues-juille}\cite{ron-zeno}. Also to have a nice drawing of them all
+they are presented in \ref{app:sort-networks}.
+
+\subsection{Bitonic mergesort}
+Other than static sorting networks there also exists algorithms to generate
+sorting networks, one such algorithm is Ken Batchers Bitonic mergesort. We
+implemented the traditional version of the Bitonic sorter, which only works on
+input sizes of $n = 2^k$ for some $k$, though it is possible to extend it to
+accept arbitrary $n$ inputs \cite{hw-lang}. The implementation is present in
+\ttt{bitonic.h}, is non-recursive, uses the alternative representation thus
+only sorts in one direction, and has been tested with random input of different
+$n = 2^k$ lengths inputs.
+
+\subsection{Branch optimization}
+Since practically all a sorting network does is comparing values and swapping
+if needed, and ignoring the network is oblivious to previous branches, it lends
+itself to use the \ttt{cmov} instruction that is available in todays x86 CPUs
+\cite{CCNS-2015}. To test the viability of this optimization we created
+\ttt{nsort.c} which is simply the 16 input sorting network and a main function
+to run the sorter on a specified number of size 16 arrays of random values, and
+finally print the total time in microseconds it took to sort them all, with the
+possibility to change the comparator macro (in code), between the one that
+should generate \ttt{cmov}s and the one that should generate jumps.
+
+\begin{center}
+    16-input sorting network over $10^5$ size 16 arrays.\\
+    \begin{tabular}{lr}
+        Type             & Time ($\mu$s)\\\hline
+        Branch optimized & 5 854\\
+        Regular          & 18 433\\
+    \end{tabular}
+\end{center}
+
+The time difference makes it quite clear that the branch optimization is
+non-negligible. And looking at brach misprediction with \ttt{valgrind} and
+\ttt{cachegrind} we see why:
+
+\begin{center}
+    16-input sorting network over $10^5$ size 16 arrays.\\
+    \begin{tabular}{lrrr}
+        Type             & Branches & Mispredicts & Rate(\%) \\\hline
+        Branch optimized & 19,334,579& 155,776    &  0.8\%\\
+        Regular          & 25 334 579& 2,481,889  &  9.8\%\\
+    \end{tabular}
+\end{center}
+
+However during testing a peculiarity of the \ttt{g++} optimizer came forth, if
+we compile \ttt{nsort.c} with \ttt{g++} instead of \ttt{gcc} but still the same
+flags then it will not optimize the comparators into \ttt{cmov} instructions.
+Quick to see by running \ttt{make nsort-c; make nsort-cpp} and then run
+\ttt{objdump -M intel -d build/nsortbo | grep cmov | wc -l} we get an output of
+\ttt{120} whichs seem reasonable enough but
+\ttt{objdump -M intel -d build/nsort | grep cmov | wc -l} gives an output of
+\ttt{0}. All this would make it seem that \ttt{g++} simply does not have the
+optimization that \ttt{gcc} has, but after implementing Bitonic mergesort we of
+course wanted to see what improvements the same branch optimization would have
+on the implementation, and quite unexpectedly we found that in this case
+\ttt{g++} would employ the \ttt{cmov} instruction as is evident when we run
+(Make sure the right macro is uncommented) \ttt{make bitonic} and afterwards
+\ttt{objdump -M intel -d build/bitonic | grep cmov | wc -l} and get the output
+\ttt{29}.
+
+
+
 
 \subsection{Testing}
 Since it can be quite hard to see from the code if a specific sorting networks
