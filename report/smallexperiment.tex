@@ -1,15 +1,54 @@
 \section{Empirical investigation}
-The sorting networks have been collected in a method that selects a prober sized network for the input. These methods has been tested on an environment with the following specification\\
+The sorting networks have been collected in a method that selects a prober
+sized network for the input. These methods has been tested on an environment
+with the following specification\\
 
-\begin{tabular}{l p{6cm}}
-	\textit{OS:} & Windows 10 Home 64-bit\\
-	\textit{Version:} & 10.0.14393 Build 14393\\
-	\textit{Processor:} & AMD A8-7410 APU with AMD Radeon R5 Graphics, 2200 Mhz, 4 Cores, 4 Logical processors\\
-	\textit{RAM(installed/usable):} & 8,00 GB/6,93 GB\\
-	\textit{Compiler:} & GNU, G++, 5.4.0
-\end{tabular}\\
+\begin{figure}
+    \centering
+    \begin{tabular}{ll}
+            \textit{OS:} & Linux 64-bit\\
+            \textit{Version:} & 4.8.4-1-ARCH\\
+            \textit{Processor:} & Intel i5 2.67 GHz\\
+            \textit{RAM:} & 12 GB\\
+            \textit{Compiler:} & GNU, G++, 6.2.1
+    \end{tabular}
+    \caption{Benchmark machine 1}
+    \label{fig:pc1}
+\end{figure}
 
-The methods has been averaged over a set of runs on a variation of smaller set sizes. The result is depicted in figur~\ref{smalltablefigure}. It is clear from the results that the branch optimization of Ford \& Johnson does not make a significant impact. This can be due to a lot of reasons, but most likely stems from the fact that the few branches in the implementation does not contribute that much to the runtime. It is evident that the Ford \& Johnson algorithm may be close to comparison optimal, but in practice the swapping and shifting of elements of which it is fairly dependent is too slow. Further more the specialized sorting networks are significantly faster than Ford \& Johnson even though they achieve almost the same number of comparisons and are aslo dependent on swapping elements.
+The methods has been averaged over a set of runs on a variation of smaller set
+sizes. The result is depicted in figur~\ref{smalltablefigure}. It is clear from
+the results that the branch optimization of Ford \& Johnson does not make a
+significant impact. This can be due to a lot of reasons, but most likely stems
+from the fact that the few branches in the implementation does not contribute
+that much to the runtime. It is evident that the Ford \& Johnson algorithm may
+be close to comparison optimal, but in practice the swapping and shifting of
+elements of which it is fairly dependent is too slow. Further more the
+specialized sorting networks are significantly faster than Ford \& Johnson even
+though they achieve almost the same number of comparisons and are aslo
+dependent on swapping elements.
 
-Compared to the standard library sorting method, it is clear that the specialized sorting networks achieve almost the same runtime. The standard library of the gnu gcc compiler uses a hybrid between introsort, itself being a hybrid, and insertion sort\cite{gnustd}. As described the sorting networks achieves around the same runtime as this hybrid method on smaller set sizes.
+Compared to the standard library sorting method, it is clear that the
+specialized sorting networks achieve almost the same runtime. The standard
+library of the gnu gcc compiler uses a hybrid between introsort, itself being a
+hybrid, and insertion sort\cite{gnustd}. As described the sorting networks
+achieves around the same runtime as this hybrid method on smaller set sizes.
 
+\begin{figure}
+\begin{tabular}{rrrrrrrrr}
+    $N$ & \ttt{std::sort}   & \ttt{nsort()} & \ttt{fsort()} & Ford Johnson  & FJ branch optimized\\\hline
+    2   & 12                & 9             & N/A           & 110       & 122\\
+    4   & 32                & 21            & 21            & 247       & 319\\
+    6   & 57                & 38            & 37            & 501       & 673\\
+    8   & 89                & 60            & 60            & 603       & 683\\
+    10  & 119               & 85            & N/A           & 895       & 1291\\
+    12  & 154               & 115           & N/A           & 1018      & 1511\\
+    14  & 192               & 147           & N/A           & 1375      & 2122\\
+    16  & 233               & 148           & N/A           & 1609      & 2398\\
+\end{tabular}
+    \caption{Comparison of small sets specialized sortes and \ttt{std::sort}.
+    \ttt{nsort()} is the sorting networks without branch optimization (due to
+    \ttt{g++} not outputing \ttt{cmov}s). \ttt{fsort()} is sorters with optimal
+    number of comparisons for $N$ elements. Machine see Figure \ref{fig:pc1}}
+\label{smalltablefigure}
+\end{figure}

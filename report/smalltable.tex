@@ -1,11 +1,15 @@
-\begin{tabular}{|l|l|l|l|l|}\hline
-	size&std::sort&Sorting networks&Ford Johnson&fj branch optimized\\\hline
-	2&293&287&647&646\\
-	4&567&277&1079&1142\\
-	6&350&348&1984&2014\\
-	8&404&418&2371&2409\\
-	10&445&521&3482&3386\\
-	12&473&538&3664&3807\\
-	14&520&608&5176&5341\\
-	16&611&685&5832&5792\\\hline
+\begin{figure}
+\begin{tabular}{rrrrrrrrr}
+    $N$ & \ttt{std::sort}   & \ttt{nsort()} & \ttt{fsort()} & Ford Johnson  & FJ branch optimized\\\hline
+    2   & 12                & 9             & N/A           & 110       & 122\\
+    4   & 32                & 21            & 21            & 247       & 319\\
+    6   & 57                & 38            & 37            & 501       & 673\\
+    8   & 89                & 60            & 60            & 603       & 683\\
+    10  & 119               & 85            & N/A           & 895       & 1291\\
+    12  & 154               & 115           & N/A           & 1018      & 1511\\
+    14  & 192               & 147           & N/A           & 1375      & 2122\\
+    16  & 233               & 148           & N/A           & 1609      & 2398\\
 \end{tabular}
+\caption{Comparison of small sets specialized sortes and std::sort}
+\label{smalltablefigure}
+\end{figure}
