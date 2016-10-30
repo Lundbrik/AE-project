@@ -1,7 +1,7 @@
 \section{Empirical investigation}
 The sorting networks have been collected in a method that selects a prober
 sized network for the input. These methods has been tested on an environment
-with the following specification\\
+with the specification depicted in figur~\ref{fig:pc1}\\
 
 \begin{figure}
     \centering
@@ -16,23 +16,18 @@ with the following specification\\
     \label{fig:pc1}
 \end{figure}
 
-The methods has been averaged over a set of runs on a variation of smaller set
+The methods have been averaged over a set of runs on a variation of smaller set
 sizes. The result is depicted in figur~\ref{smalltablefigure}. It is clear from
 the results that the branch optimization of Ford \& Johnson does not make a
-significant impact. This can be due to a lot of reasons, but most likely stems
+significant speedup, in fact it seems to slow it down. This can be due to a lot of reasons, but most likely stems
 from the fact that the few branches in the implementation does not contribute
-that much to the runtime. It is evident that the Ford \& Johnson algorithm may
-be close to comparison optimal, but in practice the swapping and shifting of
-elements of which it is fairly dependent is too slow. Further more the
-specialized sorting networks are significantly faster than Ford \& Johnson even
-though they achieve almost the same number of comparisons and are aslo
-dependent on swapping elements.
+that much to the runtime and changing it to far bigger mathematical statements does contribute quite a lot to the runtime. This gives an indication that one of the parts taking up time is index calculations. It is further evident that the Ford \& Johnson algorithm may
+be close to comparison optimal, but in practice the needed support for that is too slow to compete with other methods.
 
 Compared to the standard library sorting method, it is clear that the
-specialized sorting networks achieve almost the same runtime. The standard
+specialized sorting networks achieve a better runtime. It seems to cut almost a third of most of the times. The standard
 library of the gnu gcc compiler uses a hybrid between introsort, itself being a
-hybrid, and insertion sort\cite{gnustd}. As described the sorting networks
-achieves around the same runtime as this hybrid method on smaller set sizes.
+hybrid, and insertion sort\cite{gnustd}. This method is slightly slower than then the networks, which could be due to overhead. Lastly we can see from the table that the optimal comparison sort achieves the same runtime as the sorting networks. This indicates that the networks achieves there potential in this particular setting.
 
 \begin{figure}
 \begin{tabular}{rrrrrrrrr}

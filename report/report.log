@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.2)  30 OCT 2016 15:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.2)  30 OCT 2016 16:01
 entering extended mode
 **./report.tex
 (report.tex
@@ -987,7 +987,7 @@ Package: tokenizer 2003/05/26
 \c@sncolumncounter=\count145
 \c@snrowcounter=\count146
 
-(report.aux (smalltable.aux))
+(report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 152.
@@ -1004,8 +1004,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 152.
 LaTeX Font Info:    ... okay on input line 152.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 152.
 LaTeX Font Info:    ... okay on input line 152.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count147
 \scratchdimen=\dimen181
@@ -1111,41 +1110,134 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 (introduction.tex) (parallel.tex [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (11.66559pt too wide) in paragraph at lines 43--50
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] <graphs/pivot_split.png, 
+id=23, 578.16pt x 433.62pt>
+File: graphs/pivot_split.png Graphic file (type png)
+
+<use graphs/pivot_split.png>
+Package pdftex.def Info: graphs/pivot_split.png used on input line 33.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<graphs/pivot_perf.png, id=25, 578.16pt x 433.62pt>
+File: graphs/pivot_perf.png Graphic file (type png)
+
+<use graphs/pivot_perf.png>
+Package pdftex.def Info: graphs/pivot_perf.png used on input line 40.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Underfull \vbox (badness 3179) has occurred while \output is active []
+
+ [2 <./graphs/pivot_split.png>] <graphs/alloc_insert.png, id=35, 578.16pt x 433
+.62pt>
+File: graphs/alloc_insert.png Graphic file (type png)
+
+<use graphs/alloc_insert.png>
+Package pdftex.def Info: graphs/alloc_insert.png used on input line 56.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<graphs/alloc_push.png, id=36, 578.16pt x 433.62pt>
+File: graphs/alloc_push.png Graphic file (type png)
+
+<use graphs/alloc_push.png>
+Package pdftex.def Info: graphs/alloc_push.png used on input line 63.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <./graphs/pivot_perf.png> <./graphs/alloc_insert.png>]
+<graphs/alloc_both.png, id=44, 578.16pt x 433.62pt>
+File: graphs/alloc_both.png Graphic file (type png)
+
+<use graphs/alloc_both.png>
+Package pdftex.def Info: graphs/alloc_both.png used on input line 70.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Overfull \hbox (11.66559pt too wide) in paragraph at lines 76--83
 \T1/cmtt/m/n/10.95 vector.insert()\T1/cmr/m/n/10.95 . For the man-ual move, we 
 have where we call \T1/cmtt/m/n/10.95 vector.size()
  []
 
+<graphs/memman_move.png, id=45, 578.16pt x 433.62pt>
+File: graphs/memman_move.png Graphic file (type png)
 
-Overfull \hbox (11.62373pt too wide) in paragraph at lines 62--64
+<use graphs/memman_move.png>
+Package pdftex.def Info: graphs/memman_move.png used on input line 86.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./graphs/alloc_push.png> <./graphs/alloc_both.png>]
+<graphs/memman_insert.png, id=53, 578.16pt x 433.62pt>
+File: graphs/memman_insert.png Graphic file (type png)
+
+<use graphs/memman_insert.png>
+Package pdftex.def Info: graphs/memman_insert.png used on input line 93.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Overfull \hbox (11.62373pt too wide) in paragraph at lines 95--97
 \T1/cmr/m/n/10.95 strangely enough, even though we are mov-ing a copy, call-ing
  \T1/cmtt/m/n/10.95 vector.reserve()
  []
 
-[2] [3]) (fj.tex [4]) (sorting-networks.tex [5]) [6] (smalltablefigur.tex
-\openout2 = `smalltable.aux'.
+<graphs/memman_both.png, id=54, 578.16pt x 433.62pt>
+File: graphs/memman_both.png Graphic file (type png)
 
+<use graphs/memman_both.png>
+Package pdftex.def Info: graphs/memman_both.png used on input line 100.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
 
-(smalltable.tex)) (smallexperiment.tex
-Underfull \hbox (badness 10000) in paragraph at lines 2--3
+Overfull \hbox (13.82758pt too wide) in paragraph at lines 106--112
+\T1/cmr/m/n/10.95 empty \T1/cmtt/m/n/10.95 vector\T1/cmr/m/n/10.95 . We have th
+e fol-low-ing four ap-proaches: us-ing \T1/cmtt/m/n/10.95 vecter.insert()\T1/cm
+r/m/n/10.95 ,
+ []
+
+[5 <./graphs/memman_move.png> <./graphs/memman_insert.png> <./graphs/memman_bot
+h.png>] <graphs/memmanempty_insert.png, id=64, 578.16pt x 433.62pt>
+File: graphs/memmanempty_insert.png Graphic file (type png)
+
+<use graphs/memmanempty_insert.png>
+Package pdftex.def Info: graphs/memmanempty_insert.png used on input line 115.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<graphs/memmanempty_insertone.png, id=65, 578.16pt x 433.62pt>
+File: graphs/memmanempty_insertone.png Graphic file (type png)
+
+<use graphs/memmanempty_insertone.png>
+Package pdftex.def Info: graphs/memmanempty_insertone.png used on input line 12
+0.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<graphs/memmanempty_push.png, id=66, 578.16pt x 433.62pt>
+File: graphs/memmanempty_push.png Graphic file (type png)
+
+<use graphs/memmanempty_push.png>
+Package pdftex.def Info: graphs/memmanempty_push.png used on input line 125.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<graphs/memmanempty_constr.png, id=67, 578.16pt x 433.62pt>
+File: graphs/memmanempty_constr.png Graphic file (type png)
+
+<use graphs/memmanempty_constr.png>
+Package pdftex.def Info: graphs/memmanempty_constr.png used on input line 131.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./graphs/memmanempty_insert.png> <./graphs/memmanempty_insertone.png> <./g
+raphs/memmanempty_push.png>] [7 <./graphs/memmanempty_constr.png>] [8]) (fj.tex
+) [9]
+(sorting-networks.tex [10] [11]) (smallexperiment.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--5
 
  []
 
-
-Underfull \hbox (badness 1910) in paragraph at lines 7--8
-[]\T1/cmr/m/n/10.95 AMD A8-7410 APU with AMD
+[12]
+Overfull \hbox (16.40671pt too wide) in paragraph at lines 33--47
+[][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--11
-
- []
-
-[7
-
-
-]) (report.bbl
+) [13] (report.bbl
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 6.
 
@@ -1166,55 +1258,56 @@ Underfull \hbox (badness 1881) in paragraph at lines 15--19
 orld-wide
  []
 
-) [8] (app-sort-networks.texpdfTeX warning (ext4): destination with the same id
-entifier (name{section.1}) has been already used, duplicate ignored
+) [14] (app-sort-networks.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{section.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \section{Sorting Networks}
-                              \label{app:sort-networks}) [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
- [10] [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+                              \label{app:sort-networks}) [15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
+ [16] [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
 
-(report.aux (smalltable.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 175.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+(report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
  ) 
 Here is how much of TeX's memory you used:
- 19780 strings out of 493334
- 358388 string characters out of 3136666
- 905993 words of memory out of 3000000
- 22861 multiletter control sequences out of 15000+200000
- 17973 words of font info for 48 fonts, out of 3000000 for 9000
+ 19850 strings out of 493334
+ 360105 string characters out of 3136666
+ 905581 words of memory out of 3000000
+ 22913 multiletter control sequences out of 15000+200000
+ 18289 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,859b,932s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,11n,54p,761b,932s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
 0\ecbx0900.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\ecti0900.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\
 ljfour\jknappen\ec\dpi600\ectt0900.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2
 .9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\Marsbar\AppData\Lo
-cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\Marsba
-r\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\
-Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0
-800.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
-dpi600\ectt1095.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
-jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\font
-s\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Marsbar\AppData\Local\MiK
-TeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk> <C:\Users\Marsbar\AppDa
-ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk> <C:\Users\M
-arsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk>
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecit1095.pk> <C:\Users\Marsba
+r\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\
+Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1
+000.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
+dpi600\ecrm0800.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
+jknappen\ec\dpi600\ectt1095.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\font
+s\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\Marsbar\AppData\Local\MiK
+TeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Marsbar\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk> <C:\Users\M
+arsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk>
  <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-ecbx1440.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
-i8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-
-Output written on report.pdf (11 pages, 292299 bytes).
+ecrm1000.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
+n\ec\dpi600\ecbx1440.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr8.pfb>
+Output written on report.pdf (17 pages, 731058 bytes).
 PDF statistics:
- 711 PDF objects out of 1000 (max. 8388607)
- 56 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 797 PDF objects out of 1000 (max. 8388607)
+ 69 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
