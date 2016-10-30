@@ -1,5 +1,5 @@
 \section{Empirical investigation}
-The sorting networks have been collected in a method that selects a prober sized network for the input. These methods has been tested on an environment with the following specification
+The sorting networks have been collected in a method that selects a prober sized network for the input. These methods has been tested on an environment with the following specification\\
 
 \begin{tabular}{l p{6cm}}
 	\textit{OS:} & Windows 10 Home 64-bit\\
@@ -7,8 +7,7 @@ The sorting networks have been collected in a method that selects a prober sized
 	\textit{Processor:} & AMD A8-7410 APU with AMD Radeon R5 Graphics, 2200 Mhz, 4 Cores, 4 Logical processors\\
 	\textit{RAM(installed/usable):} & 8,00 GB/6,93 GB\\
 	\textit{Compiler:} & GNU, G++, 5.4.0
-\end{tabular}
-
+\end{tabular}\\
 
 The methods has been averaged over a set of runs on a variation of smaller set sizes. The result is depicted in figur~\ref{smalltablefigure}. It is clear from the results that the branch optimization of Ford \& Johnson does not make a significant impact. This can be due to a lot of reasons, but most likely stems from the fact that the few branches in the implementation does not contribute that much to the runtime. It is evident that the Ford \& Johnson algorithm may be close to comparison optimal, but in practice the swapping and shifting of elements of which it is fairly dependent is too slow. Further more the specialized sorting networks are significantly faster than Ford \& Johnson even though they achieve almost the same number of comparisons and are aslo dependent on swapping elements.
 
