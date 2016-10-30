@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.2)  30 OCT 2016 13:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.2)  30 OCT 2016 14:14
 entering extended mode
 **./report.tex
 (report.tex
@@ -1127,7 +1127,15 @@ Overfull \hbox (11.62373pt too wide) in paragraph at lines 62--64
 \openout2 = `smalltable.aux'.
 
 
-(smalltable.tex)) (smallexperiment.tex) (report.bbl
+(smalltable.tex)) (smallexperiment.tex
+Underfull \hbox (badness 1910) in paragraph at lines 7--8
+[]\T1/cmr/m/n/10.95 AMD A8-7410 APU with AMD
+ []
+
+[7
+
+
+]) (report.bbl
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 6.
 
@@ -1142,10 +1150,7 @@ Underfull \hbox (badness 1394) in paragraph at lines 10--13
  . cs . brandeis . edu / ~hugues / sorting _
  []
 
-[7
 
-
-]
 Underfull \hbox (badness 1881) in paragraph at lines 15--19
 []\T1/cmr/m/n/9 H. W. Lang, Bitonic sort-ing net-work for n not a power of 2, W
 orld-wide
@@ -1175,7 +1180,7 @@ Here is how much of TeX's memory you used:
  22861 multiletter control sequences out of 15000+200000
  17973 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,858b,932s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,11n,54p,859b,932s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
 0\ecbx0900.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\ecti0900.pk> <C:\Users\Marsbar\AppData\Local\MiKTeX\2.9\fonts\pk\
@@ -1197,9 +1202,9 @@ mmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
 i8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
 pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 
-Output written on report.pdf (11 pages, 287495 bytes).
+Output written on report.pdf (11 pages, 292308 bytes).
 PDF statistics:
- 697 PDF objects out of 1000 (max. 8388607)
+ 711 PDF objects out of 1000 (max. 8388607)
  56 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
