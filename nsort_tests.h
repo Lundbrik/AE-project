@@ -1,4 +1,6 @@
 #include "test_helpers.h"
+#define RAND_TESTS 100
+
 
 bool nsort_test5_1() {
     std::vector<int> data    = {5, -1, 3, 10, 2};
@@ -80,7 +82,7 @@ bool nsort_test9_1() {
 
 bool nsort_test9_2() {
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < RAND_TESTS; i++) {
         std::vector<int> data;
         push_random(data, 9);
 
@@ -109,7 +111,7 @@ bool nsort_test10_1() {
 
 bool nsort_test10_2() {
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < RAND_TESTS; i++) {
         std::vector<int> data;
         push_random(data, 10);
 
@@ -138,7 +140,7 @@ bool nsort_test11_1() {
 
 bool nsort_test11_2() {
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < RAND_TESTS; i++) {
         std::vector<int> data;
         push_random(data, 11);
 
@@ -156,3 +158,187 @@ bool nsort_test11_2() {
     return true;
 }
 
+bool nsort_test12_1() {
+    std::vector<int> data    = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
+    nsort_12(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test12_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 12);
+
+        auto orig = data;
+
+        nsort_12(data);
+        if (!is_sorted(data)) {
+            printf("nsort12 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool nsort_test13_1() {
+    std::vector<int> data    = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+
+    nsort_13(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test13_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 13);
+
+        auto orig = data;
+
+        nsort_15(data);
+        if (!is_sorted(data)) {
+            printf("nsort13 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
+
+bool nsort_test14_1() {
+    std::vector<int> data    = {14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+
+    nsort_14(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test14_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 14);
+
+        auto orig = data;
+
+        nsort_15(data);
+        if (!is_sorted(data)) {
+            printf("nsort14 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
+bool nsort_test15_1() {
+    std::vector<int> data    = {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+
+    nsort_15(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test15_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 15);
+
+        auto orig = data;
+
+        nsort_15(data);
+        if (!is_sorted(data)) {
+            printf("nsort15 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
+bool nsort_test16_1() {
+    std::vector<int> data    = {16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    std::vector<int> sorted  = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+
+    nsort_16(data);
+
+    return (is_sorted(data) && is_equal(data, sorted));
+}
+
+bool nsort_test16_2() {
+
+    for (int i = 0; i < RAND_TESTS; i++) {
+        std::vector<int> data;
+        push_random(data, 16);
+
+        auto orig = data;
+
+        nsort_16(data);
+        if (!is_sorted(data)) {
+            printf("nsort16 failed on:\n");
+            print_vector(orig);
+            print_vector(data);
+            return false;
+        }
+    }
+    return true;
+}
+
+
+bool complete_test(std::vector<int> &data, int len, int n,
+        std::function<void(std::vector<int>&)> s)
+{
+    if (n < len) {
+        //printf("%i, %i\n", len, n);
+        for (int i = 0; i < (len - n); i++) {
+            data[n] = n + i * len;
+            if (!complete_test(data, len, n+1, s)) {
+                return false;
+            }
+        }
+        return true;
+    } else {
+        auto copy = data;
+        s(copy);
+        return is_sorted(copy);
+    }
+}
+
+bool test_all_permutations(int inputs) {
+
+    for (s_nsort nsort : nsorts) {
+        if (inputs == nsort.inputs) {
+            bool res[inputs];
+#pragma omp parallel for
+            for (int i = 0; i < inputs; i++) {
+                std::vector<int> data;
+                push_random(data, inputs);
+                data[0] = i * inputs;
+                res[i] = complete_test(data, inputs, 1, nsort.func);
+            }
+            for (int i = 0; i < inputs; i++) {
+                if (!res[i])
+                    return false;
+            }
+            return true;
+        }
+    }
+    std::cout << "Sorting network of size: " << inputs << " not found" << std::endl;
+    return false;
+}

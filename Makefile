@@ -1,12 +1,17 @@
 CXX        = g++
-CXXFLAGS   = -O3
+CXXFLAGS   = -O3 -fopenmp -std=c++11
 
 
 BUILD	    = build
 SOURCES_CPP = test.cpp
-HELPERS     = nsort.h test_helpers.h
+HELPERS     = nsort.h test_helpers.h nsort_tests.h fordjohnson.h
 OBJECTS     = $(BUILD)/test.o
 EXECUTABLE  = $(BUILD)/test
+
+EXPERIMENT_CPP = performance_nsort.cpp
+E_HELPERS      = test_helpers.h nsort.h fordjohnson.h
+E_OBJECTS      = $(BUILD)/experiment.o
+E_EXECUTABLE   = $(BUILD)/experiment
 
 
 default: all
@@ -14,6 +19,7 @@ default: all
 prep:
 	@mkdir -p build
 
+# Test object
 $(OBJECTS): $(SOURCES_CPP) $(HELPERS)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
@@ -21,11 +27,21 @@ $(OBJECTS): $(SOURCES_CPP) $(HELPERS)
 all: prep $(EXECUTABLE)
 
 test: all
-	build/test
+	build/test $(ARGS)
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(OBJECTS)
 
+
+# Experiment
+$(E_OBJECTS): $(EXPERIMENT_CPP) $(E_HELPERS)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(E_EXECUTABLE): $(E_OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(E_EXECUTABLE) $(E_OBJECTS)
+
+experi: prep $(E_EXECUTABLE)
+	$(BUILD)/experiment $(INPUTS) $(RUNS)
 
 clean:
 	rm -rf build
