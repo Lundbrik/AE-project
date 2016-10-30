@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{gnustd}
+, Sorting algorithms, Worldwide Web Document.
+Available at
+  \url{https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-4.4/a01027.html}
+  Accessed: 30-10-2016
+
 \bibitem{hugues-juille}
  H.~Juille, Sorting networks and the end search algorithm, Worldwide Web
   Document  (2002).
