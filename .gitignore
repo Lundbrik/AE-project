@@ -1,1 +1,7 @@
+*.aux
+*.log
+*.blg
+*.bbl
+*.dvi
+*.pdf
 build/*
