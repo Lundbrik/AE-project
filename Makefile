@@ -43,6 +43,25 @@ $(E_EXECUTABLE): $(E_OBJECTS)
 experi: prep $(E_EXECUTABLE)
 	$(BUILD)/experiment $(INPUTS) $(RUNS)
 
+NSORT-RUNS = 100000
+
+nsort-c: nsort.c
+	gcc -O3 -o $(BUILD)/nsortbo nsort.c
+	$(BUILD)/nsortbo $(NSORT-RUNS)
+
+nsort-cpp: nsort.c
+	g++ -O3 -o $(BUILD)/nsort nsort.c
+	$(BUILD)/nsort $(NSORT-RUNS)
+
+
+bitonic: bitonic.cpp bitonic.h
+	g++ -O3 -o $(BUILD)/bitonic bitonic.cpp
+	$(BUILD)/bitonic $(RUNS) $(N)
+
+bitonic-par: bitonic.cpp bitonic.h
+	g++ -fopenmp -O3 -o $(BUILD)/bitonic bitonic.cpp
+	$(BUILD)/bitonic $(RUNS) $(N)
+
 clean:
 	rm -rf build
 
