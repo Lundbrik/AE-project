@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}
+
+\bibitem{gnustd}
+, Sorting algorithms, Worldwide Web Document.
+Available at
+  \url{https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-4.4/a01027.html}
+  Accessed: 30-10-2016
+
+\bibitem{hugues-juille}
+ H.~Juille, Sorting networks and the end search algorithm, Worldwide Web
+  Document  (2002).
+Available at  \url{http://www.cs.brandeis.edu/~hugues/sorting_networks.html}.
+
+\bibitem{hw-lang}
+ H.~W. Lang, Bitonic sorting network for n not a power of 2, Worldwide Web
+  Document  (1998-2016).
+Available at
+  \url{http://www.iti.fh-flensburg.de/lang/algorithmen/sortieren/bitonic/oddn.htm}.
+
+\bibitem{fj59}
+ J.~Lester R.~Ford and S.~M. Johnson, A tournament problem, \emph{The American
+  Mathematical Monthly} \textbf{66}, 5  (1959), 387--389.
+
+\bibitem{m77}
+ G.~K. Manacher, The ford-johnson sorting algorithm is not optimal,
+  \emph{Journal of the Association for Computing Machinery} \textbf{26}, 3
+  (1977).
+
+\bibitem{CCFS-2014}
+ M.~F. Michal~Codish, Luis Cruz-Filipe and P.~Scheider-Kamp, Twenty-five
+  comparators is optimal when sorting nine inputs (and twenty-nine for ten),
+  \emph{arXiv:1405.5754}  (2014).
+
+\bibitem{CCNS-2015}
+ M.~N. Michal~Codish, Luis Cruz-Filipe and P.~Scheider-Kamp, Applying sorting
+  networks to synthesize optimized sorting libraries, \emph{arXiv:1505.01962}
+  (2015).
+
+\bibitem{m97}
+ D.~Musser.
+
+\bibitem{ron-zeno}
+ R.~Zeno, A reference of the best-known sorting networks for up to 16 inputs,
+  Worldwide Web Document  (2002).
+Available at
+  \url{http://www.angelfire.com/blog/ronz/Articles/999SortingNetworksReferen.html}.
+
+\end{thebibliography}

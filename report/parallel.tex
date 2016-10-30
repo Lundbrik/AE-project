@@ -155,7 +155,7 @@ in our graphs.
 
 \subsubsection{Limited parallel implementation}
 Following the naive implementation, we tried to make the same approach, but
-only spaw a limited number of threads. This did give a speedup, on larger
+only spawn a limited number of threads. This did give a speedup, on larger
 input. However, the performance of this approach depends a lot on the splits.
 E.g. if we get a bad split in the beginning, i.e. one small portion and one big
 portion, the thread getting the smaller portion finishes faster, and does not
