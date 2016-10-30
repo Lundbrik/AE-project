@@ -204,7 +204,6 @@ int main(int argc, char* argv[]) {
         for (auto vec : inputs3) {
             if (!is_sorted(vec)) {
                 std::cout << "fj::sort() failed to sort" << std::endl;
-                print_vector(vec);
                 break;
             }
         }
@@ -218,7 +217,7 @@ int main(int argc, char* argv[]) {
         // BO Ford Johnson
         auto fbot1 = steady_clock::now();
 
-        for (auto vec : inputs4) {
+        for (auto &vec : inputs4) {
             fjbo::sort<int>(vec);
         }
         auto fbot2 = steady_clock::now();
@@ -228,11 +227,17 @@ int main(int argc, char* argv[]) {
 
             //std::cout << (fj_time.count() / runs) << std::endl;
         }
+        for (auto vec : inputs4) {
+            if (!is_sorted(vec)) {
+                std::cout << "fjbo::sort() failed to sort" << std::endl;
+                break;
+            }
+        }
 
         // Writing out
         //std::cout << std::endl << std::endl << std::endl;
         std::cout << "std sort took " << (std_time.count() / runs) << std::endl;
-        std::cout << "nsort took " << (nsort_time.count() / runs) << std::endl;
+        if (found) std::cout << "nsort took " << (nsort_time.count() / runs) << std::endl;
         if (fs) std::cout << "fsort took " << (fs_time.count() / runs) << std::endl;
         std::cout << "fj sort took " << (fj_time.count() / runs) << std::endl;
         std::cout << "fjbo sort took " << (fjbo_time.count() / runs) << std::endl;

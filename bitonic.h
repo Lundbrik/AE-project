@@ -1,3 +1,6 @@
+#ifndef bitonic
+#define bitonic
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -7,7 +10,6 @@
 #include <vector>
 #include "test_helpers.h"
 
-//#define cmp_swap(a, b) printf("%i, %i\n", a, b); if (data[a]>data[b]) std::swap(data[a],data[b])
 //#define cmp_swap(a, b) if (a>b) std::swap(a,b)
 
 #define COND(c, x, y) { x = (c) ? y : x; }
@@ -18,8 +20,6 @@
 
 
 // Assume n = 2^x for some x
-
-
 // Assumes than data is of size 2^(log_n)
 template <class T>
 void bitonic_sort(std::vector<T> &data, int log_n) {
@@ -65,61 +65,4 @@ void bitonic_sort(std::vector<T> &data, int log_n) {
     }
 }
 
-int timeval_subtract(	struct timeval* result,
-			struct timeval* t2, struct timeval* t1) {
-	unsigned int resolution=1000000;
-	long int diff = (t2->tv_usec + resolution * t2->tv_sec) -
-			(t1->tv_usec + resolution * t1->tv_sec);
-	result->tv_sec = diff / resolution;
-	result->tv_usec = diff % resolution;
-	return (diff<0);
-}
-
-bool is_sortedc(int data[], int n) {
-    for (int i = 0; i < n-1; i++) {
-        if (!(data[i] <= data[i+1]))
-            return false;
-    }
-    return true;
-}
-/*
-int main(int argc, char *argv[]) {
-    if (argc < 3) {
-        return 42;
-    }
-    int n = atoi(argv[1]);
-    int size = atoi(argv[2]);
-
-    std::vector<int> test[n];
-
-
-    srand(time(NULL));
-    for (int i = 0; i < n; i++) {
-        //test[i] = (int*) malloc(size * sizeof(int));
-        test[i] = std::vector<int>();
-        push_random(test[i], size);
-    }
-
-    struct timeval t_start, t_end, t_diff;
-    gettimeofday(&t_start, NULL);
-
-    for (int i = 0; i < n; i++) {
-        bitonic_sort(test[i], log2(size));
-    }
-
-    gettimeofday(&t_end, NULL);
-    timeval_subtract(&t_diff, &t_end, &t_start);
-    int elapsed = t_diff.tv_sec * 1e6 + t_diff.tv_usec;
-
-    for (int i = 0; i < n; i++) {
-        if (!is_sorted(test[i])) {
-            print_vector(test[i]);
-            printf("Fail\n");
-            return 21;
-        }
-    }
-
-    printf("Time (us): %i\n", elapsed/n);
-
-}
-*/
+#endif
