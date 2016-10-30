@@ -46,29 +46,33 @@ itself to use the \ttt{cmov} instruction that is available in todays x86 CPUs
 to run the sorter on a specified number of size 16 arrays of random values, and
 finally print the total time in microseconds it took to sort them all, with the
 possibility to change the comparator macro (in code), between the one that
-should generate \ttt{cmov}s and the one that should generate jumps.
+should generate \ttt{cmov}s and the one that should generate jumps. The time
+difference, seen in Figure \ref{fig:branch-time} makes it quite clear that the
+branch optimization is non-negligible. And looking at brach misprediction with
+\ttt{valgrind} and \ttt{cachegrind} in Figure \ref{fig:branch-predict} we see
+why.
 
-\begin{center}
-    16-input sorting network over $10^5$ size 16 arrays.\\
+\begin{figure}
+    \centering
     \begin{tabular}{lr}
         Type             & Time ($\mu$s)\\\hline
         Branch optimized & 5 854\\
         Regular          & 18 433\\
     \end{tabular}
-\end{center}
+    \caption{16-input sorting network over $10^5$ size 16 arrays}
+    \label{fig:branch-time}
+\end{figure}
 
-The time difference makes it quite clear that the branch optimization is
-non-negligible. And looking at brach misprediction with \ttt{valgrind} and
-\ttt{cachegrind} we see why:
-
-\begin{center}
-    16-input sorting network over $10^5$ size 16 arrays.\\
+\begin{figure}
+    \centering
     \begin{tabular}{lrrr}
         Type             & Branches & Mispredicts & Rate(\%) \\\hline
         Branch optimized & 19,334,579& 155,776    &  0.8\%\\
         Regular          & 25 334 579& 2,481,889  &  9.8\%\\
     \end{tabular}
-\end{center}
+    \caption{16-input sorting network over $10^5$ size 16 arrays.}
+    \label{fig:branch-predict}
+\end{figure}
 
 However during testing a peculiarity of the \ttt{g++} optimizer came forth, if
 we compile \ttt{nsort.c} with \ttt{g++} instead of \ttt{gcc} but still the same
@@ -86,8 +90,30 @@ on the implementation, and quite unexpectedly we found that in this case
 \ttt{objdump -M intel -d build/bitonic | grep cmov | wc -l} and get the output
 \ttt{29}.
 
+Finally Bitonic also lends itself to some parallelisation where we used
+\tit{OpenMP} to parallelise the second loop of the implementation, there are
+more loops that can be executed in parallel, but from some testing they were
+not worth the cost.
 
-
+\begin{figure}
+    \centering
+    \begin{tabular}{lrrrr}
+        $N$         & \ttt{std::sort} & Bitonic BO & Bitonic parallel & Bitonic\\\hline
+        $2^7$       & 1               & 7          & 18               & 10\\
+        $2^8$       & 2               & 16         & 28               & 24\\
+        $2^9$       & 5               & 36         & 73               & 55\\
+        $2^{10}$    & 11              & 82         & 120              & 125\\
+        $2^{11}$    & 25              & 181        & 185              & 281\\
+        $2^{12}$    & 55              & 400        & 382              & 624\\
+        $2^{13}$    & 120             & 878        & 769              & 1386\\
+        $2^{14}$    & 256             & 1916       & 1790             & 3043\\
+        $2^{15}$    & 553             & 4160       & 3476             & 6625\\
+    \end{tabular}
+    \caption{Comparison of \ttt{std::sort} to the different versions of Bitonic
+    mergesort. Time is in $\mu$s, and is the averege time to sort $N$ elements
+    over $10^4$ runs}
+    \label{fig:bitonic}
+\end{figure}
 
 \subsection{Testing}
 Since it can be quite hard to see from the code if a specific sorting networks
@@ -99,3 +125,10 @@ possible permutations of inputs of that size, though this should be possible to
 make in $O(2^n)$ instead of the current $O(n!)$ due to the Zero-one principle.
 This permutation test has been run on all the implemented sorting networks up
 to and including \ttt{nsort\_13()}
+
+\subsection{Performance}
+In Figure \ref{fig:bitonic} we have compared the three versions of Bitonic
+mergesort to \ttt{std::sort()}. We clearly see that \ttt{std::sort()} wins by
+quite a bit, also unsurprisingly the branch optimized Bitonic is better than
+the regular one, and finally that the parallel version is worse upto around
+$2^{11}$ elements after which it begins to outperform the non-parallel version.
