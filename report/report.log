@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.2)  30 OCT 2016 14:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.2)  30 OCT 2016 15:01
 entering extended mode
 **./report.tex
 (report.tex
@@ -1128,8 +1128,18 @@ Overfull \hbox (11.62373pt too wide) in paragraph at lines 62--64
 
 
 (smalltable.tex)) (smallexperiment.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
 Underfull \hbox (badness 1910) in paragraph at lines 7--8
 []\T1/cmr/m/n/10.95 AMD A8-7410 APU with AMD
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--11
+
  []
 
 [7
@@ -1176,7 +1186,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
 Here is how much of TeX's memory you used:
  19780 strings out of 493334
  358388 string characters out of 3136666
- 904993 words of memory out of 3000000
+ 905993 words of memory out of 3000000
  22861 multiletter control sequences out of 15000+200000
  17973 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1202,7 +1212,7 @@ mmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
 i8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
 pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 
-Output written on report.pdf (11 pages, 292308 bytes).
+Output written on report.pdf (11 pages, 292299 bytes).
 PDF statistics:
  711 PDF objects out of 1000 (max. 8388607)
  56 named destinations out of 1000 (max. 500000)
