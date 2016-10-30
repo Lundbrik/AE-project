@@ -3,7 +3,7 @@ In this section, we will be looking at parallelising sorting algorithms. We
 will be looking at sorting elements residing within the \texttt{vector} data
 structure. Since we are trying to shave off time, we start by looking into
 different approaches to memory management, allocation and access. From there we
-will be implementing sequential versions of Quicksolt and Mergesort. Then we
+will be implementing sequential versions of Quicksort and Mergesort. Then we
 will be parallelising these algorithms, and finally combine a combination of
 both.
 
@@ -88,7 +88,7 @@ resulting in very bad performance.
 
 \subsubsection{Limited parallel implementation}
 Following the naive implementation, we tried to make the same approach, but
-only spaw a limited number of threads. This did give a speedup, on larger
+only spawn a limited number of threads. This did give a speedup, on larger
 input. However, the performance of this approach depends a lot on the splits.
 E.g. if we get a bad split in the beginning, i.e. one small portion and one big
 portion, the thread getting the smaller portion finishes faster, and does not

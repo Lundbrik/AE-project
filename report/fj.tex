@@ -1,5 +1,5 @@
 \section{Ford Johnson}
-When considering element comparison in sorting smaller sets of numbers the algorithm by Ford \& Johnson is a classical example\cite{fj59}. It is close to optimal in the number of element comparisons it needs to sort smaller sets of numbers \cite{m77}. We have implemented an in-place version of the Ford Johnson algorithm following the outline by Ford \& Johnson\cite{fj59}.
+When considering element comparison in sorting smaller sets of numbers the algorithm by Ford \& Johnson is a classical example\cite{fj59}. It is close to optimal in the number of element comparisons it needs to sort smaller sets of numbers \cite{m77}. We have implemented an in-place version of the Ford \& Johnson algorithm following the outline by Ford \& Johnson\cite{fj59}.
 
 \subsection{Branch optimization}
 The Ford \& Johnson may be close to optimal in number of element comparisons made, but it relies on binary search among other sub procedures. These along with the main method uses branching to choose between two ways through the code. This will make it difficult for the compiler to pipeline the instructions in a way that optimizes the runtime, due to the potential flushes of misspredicting the branches.
